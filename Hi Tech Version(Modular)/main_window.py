@@ -33,7 +33,7 @@ from PyQt5.QtWidgets import (
     QComboBox,
     QSystemTrayIcon,
 )  # QLineEdit,
-from PyQt5.QtCore import QSettings, QTimer  # QThread, pyqtSignal
+from PyQt5.QtCore import QSettings, QTimer, Qt, QPoint  # QThread, pyqtSignal
 from loguru import logger
 
 logger.add("downloader.log", rotation="500 KB")
@@ -75,7 +75,283 @@ class YouTubeDownloader(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("YouTube Downloader")
-        self.setGeometry(400, 100, 800, 500)
+        self.setGeometry(400, 100, 800, 550)
+
+        # Frameless window for custom title bar
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.drag_position = None
+
+        # Windows 7 Aero Blue Theme - Authentic Colors
+        # Main Windows 7 Blue: #00a2ed (Microsoft Blue)
+        # Window Background: #245edc (Classic Windows Blue)
+        self.setStyleSheet("""
+            QWidget {
+                background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #3a7bd5, stop:1 #245edc);
+                color: #ffffff;
+                font-family: "Segoe UI", Arial, sans-serif;
+                font-size: 11px;
+            }
+
+            QLabel {
+                background: transparent;
+                color: #ffffff;
+                padding: 2px;
+            }
+
+            QLineEdit {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #7eb4ea;
+                border-radius: 3px;
+                padding: 5px 8px;
+                selection-background-color: #3399ff;
+            }
+
+            QLineEdit:focus {
+                border: 1px solid #00a2ed;
+            }
+
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #fefefe, stop:0.4 #e8e8e8, stop:0.5 #d0d0d0, stop:1 #c8c8c8);
+                color: #000000;
+                border: 1px solid #707070;
+                border-radius: 3px;
+                padding: 5px 15px;
+                min-width: 75px;
+            }
+
+            QPushButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e5f3fb, stop:0.4 #c4e5f6, stop:0.5 #98d1ef, stop:1 #68c3ea);
+                border: 1px solid #3c7fb1;
+            }
+
+            QPushButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #d0e9f7, stop:0.4 #a9d9f0, stop:0.5 #7ac2e5, stop:1 #5eb6db);
+                border: 1px solid #2c628b;
+            }
+
+            QPushButton:disabled {
+                background: #f4f4f4;
+                color: #838383;
+                border: 1px solid #adb2b5;
+            }
+
+            QProgressBar {
+                background-color: #e6e6e6;
+                border: 1px solid #bcbcbc;
+                border-radius: 3px;
+                text-align: center;
+                color: #000000;
+                height: 18px;
+            }
+
+            QProgressBar::chunk {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #37b44a, stop:0.5 #2a9d3c, stop:1 #1e8a30);
+                border-radius: 2px;
+            }
+
+            QComboBox {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #7eb4ea;
+                border-radius: 3px;
+                padding: 4px 8px;
+                min-width: 120px;
+            }
+
+            QComboBox:hover {
+                border: 1px solid #00a2ed;
+            }
+
+            QComboBox::drop-down {
+                border: none;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #f0f0f0, stop:1 #d8d8d8);
+                width: 20px;
+                border-left: 1px solid #c0c0c0;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+
+            QComboBox QAbstractItemView {
+                background-color: #ffffff;
+                color: #000000;
+                selection-background-color: #3399ff;
+                selection-color: white;
+                border: 1px solid #7eb4ea;
+            }
+
+            QListWidget {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #7eb4ea;
+                border-radius: 3px;
+                padding: 2px;
+            }
+
+            QListWidget::item {
+                padding: 4px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            QListWidget::item:selected {
+                background-color: #3399ff;
+                color: white;
+            }
+
+            QListWidget::item:hover {
+                background-color: #e5f3fb;
+            }
+
+            QMessageBox {
+                background-color: #f0f0f0;
+            }
+
+            QMessageBox QLabel {
+                color: #000000;
+            }
+
+            QMessageBox QPushButton {
+                min-width: 70px;
+            }
+
+            /* Green Button - Add/Download actions */
+            QPushButton#greenButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #5cb85c, stop:0.5 #449d44, stop:1 #398439);
+                color: white;
+                border: 1px solid #255625;
+                font-weight: bold;
+            }
+
+            QPushButton#greenButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #6ed36e, stop:0.5 #5cb85c, stop:1 #449d44);
+                border: 1px solid #398439;
+            }
+
+            QPushButton#greenButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #398439, stop:0.5 #2d6a2d, stop:1 #255625);
+            }
+
+            /* Cyan Button - Paste/Fetch actions */
+            QPushButton#blueButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #00c9d8, stop:0.5 #00a8b8, stop:1 #0090a0);
+                color: white;
+                border: 1px solid #007080;
+                font-weight: bold;
+            }
+
+            QPushButton#blueButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #20e0f0, stop:0.5 #00c9d8, stop:1 #00a8b8);
+                border: 1px solid #0090a0;
+            }
+
+            QPushButton#blueButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #0090a0, stop:0.5 #007888, stop:1 #006070);
+            }
+
+            /* Orange Button - Folder selection */
+            QPushButton#orangeButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #f0ad4e, stop:0.5 #ec971f, stop:1 #d58512);
+                color: white;
+                border: 1px solid #985f0d;
+                font-weight: bold;
+            }
+
+            QPushButton#orangeButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #f5c879, stop:0.5 #f0ad4e, stop:1 #ec971f);
+                border: 1px solid #d58512;
+            }
+
+            QPushButton#orangeButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #d58512, stop:0.5 #c77c0f, stop:1 #985f0d);
+            }
+
+            /* Red Button - Cancel actions */
+            QPushButton#redButton {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #d9534f, stop:0.5 #c9302c, stop:1 #ac2925);
+                color: white;
+                border: 1px solid #761c19;
+                font-weight: bold;
+            }
+
+            QPushButton#redButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e67573, stop:0.5 #d9534f, stop:1 #c9302c);
+                border: 1px solid #ac2925;
+            }
+
+            QPushButton#redButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #ac2925, stop:0.5 #96231f, stop:1 #761c19);
+            }
+
+            QPushButton#redButton:disabled {
+                background: #e0a0a0;
+                color: #888888;
+                border: 1px solid #c08080;
+            }
+
+            /* Custom Title Bar */
+            QWidget#titleBar {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #4a90d9, stop:0.5 #2d6fc4, stop:1 #245edc);
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                min-height: 32px;
+            }
+
+            QLabel#titleLabel {
+                color: white;
+                font-size: 13px;
+                font-weight: bold;
+                padding-left: 8px;
+            }
+
+            QPushButton#minimizeBtn, QPushButton#maximizeBtn, QPushButton#closeBtn {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 11px;
+                font-weight: bold;
+                min-width: 30px;
+                max-width: 30px;
+                min-height: 22px;
+                max-height: 22px;
+                border-radius: 0px;
+                padding: 0px;
+            }
+
+            QPushButton#minimizeBtn:hover, QPushButton#maximizeBtn:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            QPushButton#closeBtn:hover {
+                background-color: #e81123;
+            }
+
+            QPushButton#minimizeBtn:pressed, QPushButton#maximizeBtn:pressed {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            QPushButton#closeBtn:pressed {
+                background-color: #bf0f1d;
+            }
+        """)
 
         # ----Ensure app environment by app_dir_creator.py----
         ffmpeg_path = ensure_environment()
@@ -240,70 +516,117 @@ class YouTubeDownloader(QWidget):
     def init_ui(self):
         # --------------Main vertical layout-----------------------
         layout = QVBoxLayout()
-        layout.setContentsMargins(10, 10, 10, 10)
-        layout.setSpacing(8)  # Assigns uniform vertical spacing
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+
+        # ---------------- Custom Title Bar ----------------
+        title_bar = QWidget()
+        title_bar.setObjectName("titleBar")
+        title_bar.setFixedHeight(35)
+        title_bar_layout = QHBoxLayout(title_bar)
+        title_bar_layout.setContentsMargins(5, 0, 0, 0)
+        title_bar_layout.setSpacing(0)
+
+        # Title label
+        title_label = QLabel("🎬 YouTube Downloader")
+        title_label.setObjectName("titleLabel")
+        title_bar_layout.addWidget(title_label)
+
+        title_bar_layout.addStretch()
+
+        # Minimize button
+        minimize_btn = QPushButton("─")
+        minimize_btn.setObjectName("minimizeBtn")
+        minimize_btn.clicked.connect(self.showMinimized)
+        title_bar_layout.addWidget(minimize_btn)
+
+        # Maximize button
+        self.maximize_btn = QPushButton("☐")
+        self.maximize_btn.setObjectName("maximizeBtn")
+        self.maximize_btn.clicked.connect(self.toggle_maximize)
+        title_bar_layout.addWidget(self.maximize_btn)
+
+        # Close button
+        close_btn = QPushButton("✕")
+        close_btn.setObjectName("closeBtn")
+        close_btn.clicked.connect(self.close)
+        title_bar_layout.addWidget(close_btn)
+
+        layout.addWidget(title_bar)
+
+        # Content area with padding
+        content = QWidget()
+        content_layout = QVBoxLayout(content)
+        content_layout.setContentsMargins(10, 10, 10, 10)
+        content_layout.setSpacing(8)
 
         # ---------------- URL Input ----------------
-        url_layout = QHBoxLayout()
-        url_layout.setSpacing(8)
-        layout.setContentsMargins(10, 10, 10, 10)
+        url_content_layout = QHBoxLayout()
+        url_content_layout.setSpacing(8)
+        content_layout.setContentsMargins(10, 10, 10, 10)
         self.url_input = UrlLineEdit(self)
         self.url_input.setPlaceholderText("Enter YouTube URL Here")
-        url_layout.addWidget(self.url_input)
+        url_content_layout.addWidget(self.url_input)
 
         paste_button = QPushButton("📋 Paste URL")
+        paste_button.setObjectName("blueButton")
         paste_button.setFixedWidth(90)
         paste_button.clicked.connect(self._paste_clipboard)
-        url_layout.addWidget(paste_button)
-        layout.addLayout(url_layout)
+        url_content_layout.addWidget(paste_button)
+        content_layout.addLayout(url_content_layout)
 
         # ---------------- Output Folder ----------------
-        folder_layout = QHBoxLayout()
-        folder_layout.setSpacing(5)
+        folder_content_layout = QHBoxLayout()
+        folder_content_layout.setSpacing(5)
         self.saved_folder_label = QLabel(f"Download to :-  {self.output_folder}")
-        folder_layout.addWidget(self.saved_folder_label)
+        folder_content_layout.addWidget(self.saved_folder_label)
 
-        self.output_folder_btn = QPushButton("Select Download Folder")
+        self.output_folder_btn = QPushButton("📂 Save To")
+        self.output_folder_btn.setObjectName("orangeButton")
         self.output_folder_btn.setFixedWidth(140)
         self.output_folder_btn.clicked.connect(self.select_output_folder)
-        folder_layout.addWidget(self.output_folder_btn)
-        layout.addLayout(folder_layout)
+        folder_content_layout.addWidget(self.output_folder_btn)
+        content_layout.addLayout(folder_content_layout)
 
         # ---------------- Format & Quality ----------------
         self.format_quality_combo = QComboBox()  # Combined format + quality dropdown
         self.format_quality_combo.addItem("Select Format")  # Placeholder
-        layout.addWidget(self.format_quality_combo)
+        content_layout.addWidget(self.format_quality_combo)
 
         # Add a button to fetch formats/sizes
         fetch_button = QPushButton("Fetch Formats")
+        fetch_button.setObjectName("blueButton")
         fetch_button.clicked.connect(self.update_format_dropdown)
-        layout.addWidget(fetch_button)
+        content_layout.addWidget(fetch_button)
 
         # ---------------- Queue Buttons ----------------
-        queue_layout = QHBoxLayout()
-        #    queue_layout.setSpacing(5)
+        queue_content_layout = QHBoxLayout()
+        #    queue_content_layout.setSpacing(5)
         self.enqueue_button = QPushButton("Add to Queue")
+        self.enqueue_button.setObjectName("greenButton")
         self.enqueue_button.clicked.connect(self.enqueue_download)
         self.download_button = QPushButton("Start Queue Download")
+        self.download_button.setObjectName("greenButton")
         self.download_button.clicked.connect(self.start_queue)
         self.cancel_button = QPushButton("Cancel Download")
+        self.cancel_button.setObjectName("redButton")
         self.cancel_button.setEnabled(False)
         self.cancel_button.clicked.connect(self.cancel_download)
 
-        queue_layout.addWidget(self.enqueue_button)
-        queue_layout.addWidget(self.download_button)
-        queue_layout.addWidget(self.cancel_button)
-        layout.addLayout(queue_layout)
+        queue_content_layout.addWidget(self.enqueue_button)
+        queue_content_layout.addWidget(self.download_button)
+        queue_content_layout.addWidget(self.cancel_button)
+        content_layout.addLayout(queue_content_layout)
 
         # ---------------- Queue List ----------------
         self.queue_list = QListWidget()
         self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        layout.addWidget(self.queue_list)
+        content_layout.addWidget(self.queue_list)
 
         # ---------------- Progress Bar ---------------------
-        # progress_layout = QHBoxLayout()  # Isolated layout for progress bar
-        # progress_layout.setContentsMargins(0, 0, 0, 0)
-        # progress_layout.setSpacing(0)
+        # progress_content_layout = QHBoxLayout()  # Isolated content_layout for progress bar
+        # progress_content_layout.setContentsMargins(0, 0, 0, 0)
+        # progress_content_layout.setSpacing(0)
 
         self.progress_bar = QProgressBar()
         self.progress_bar.setTextVisible(False)
@@ -311,21 +634,46 @@ class YouTubeDownloader(QWidget):
         #    self.progress_bar.setMaximumWidth(16777215)
         self.progress_bar.setStyleSheet("margin: 0px; padding: 0px;")
         self.progress_bar.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        layout.addWidget(self.progress_bar)  # Add directly to main layout
+        content_layout.addWidget(self.progress_bar)  # Add directly to main content_layout
 
-        #    progress_layout.addWidget(self.progress_bar)
-        #    layout.addLayout(progress_layout)  # Add the isolated layout
-        #    layout.addSpacing(5)
-        #    layout.addStretch(0)
+        #    progress_content_layout.addWidget(self.progress_bar)
+        #    content_layout.addLayout(progress_content_layout)  # Add the isolated content_layout
+        #    content_layout.addSpacing(5)
+        #    content_layout.addStretch(0)
 
         # ---------------- Status Label ----------------
         self.status_label = QLabel("Status: Idle")
         self.status_label.setContentsMargins(0, 0, 0, 0)
         self.status_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        layout.addWidget(self.status_label, 0)
+        content_layout.addWidget(self.status_label, 0)
 
-
+        layout.addWidget(content)
         self.setLayout(layout)  # Finalize the layout
+
+    def toggle_maximize(self):
+        """Toggle between maximized and normal window state."""
+        if self.isMaximized():
+            self.showNormal()
+            self.maximize_btn.setText("☐")
+        else:
+            self.showMaximized()
+            self.maximize_btn.setText("❐")
+
+    def mousePressEvent(self, event):
+        """Handle mouse press for window dragging."""
+        if event.button() == Qt.LeftButton and event.pos().y() < 35:
+            self.drag_position = event.globalPos() - self.frameGeometry().topLeft()
+            event.accept()
+
+    def mouseMoveEvent(self, event):
+        """Handle mouse move for window dragging."""
+        if event.buttons() == Qt.LeftButton and self.drag_position:
+            self.move(event.globalPos() - self.drag_position)
+            event.accept()
+
+    def mouseReleaseEvent(self, event):
+        """Handle mouse release to stop dragging."""
+        self.drag_position = None
 
     def _paste_clipboard(self):
         self.url_input.smart_paste()
