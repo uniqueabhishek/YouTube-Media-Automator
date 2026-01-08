@@ -1,0 +1,4 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "python.defaultInterpreterPath": "${workspaceFolder}/Hi Tech Version(Modular)/.venv/Scripts/python.exe"
+}
