@@ -38,8 +38,8 @@ from database_handler import DatabaseManager, init_db
 from download_thread import DownloadThread
 from ffmpeg_utils import get_ffmpeg_path as find_ffmpeg
 from queue_item import QueueItem, QueueStatus
+from queue_manager import QueueManager
 from smart_paste_utils import UrlLineEdit
-from title_fetch_thread import TitleFetchThread
 
 logger.add("downloader.log", rotation="500 KB")
 
@@ -391,12 +391,10 @@ class YouTubeDownloader(QWidget):
 
         # ---------------------------------------------------
 
-        # Queue now stores QueueItem objects with metadata
-        self.download_queue: list[QueueItem] = []
+        # Queue manager handles all queue operations
+        self.queue_manager: QueueManager | None = None  # Initialized in init_ui
         self.download_thread = None
         self.downloading = False
-        # Track background title fetch threads
-        self.title_fetch_threads: list[TitleFetchThread] = []
 
         self.settings = QSettings("YouTubeDownloader", "Settings")
         # self.output_folder = self.settings.value("output_folder", os.getcwd())
@@ -659,10 +657,14 @@ class YouTubeDownloader(QWidget):
         self.queue_list = QListWidget()
         self.queue_list.setSizePolicy(
             QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        # Initialize queue manager
+        self.queue_manager = QueueManager(self.queue_list, self)
+
         # Enable right-click context menu
         self.queue_list.setContextMenuPolicy(Qt.CustomContextMenu)
         self.queue_list.customContextMenuRequested.connect(
-            self.show_queue_context_menu)
+            self.queue_manager.show_context_menu)
         content_layout.addWidget(self.queue_list)
 
         # ---------------- Progress Bar ---------------------
@@ -757,116 +759,6 @@ class YouTubeDownloader(QWidget):
             self.saved_folder_label.setText(f"📁 {self.output_folder}")
 
     # ----------------------- Queue -----------------------
-    def update_queue_display(self):
-        """Update the queue list widget to show current queue state."""
-        self.queue_list.clear()
-        for index, item in enumerate(self.download_queue, start=1):
-            icon = item.get_status_icon()
-            text = item.get_display_text()
-            self.queue_list.addItem(f"#{index} {icon} {text}")
-
-    def fetch_video_title(self, queue_item: QueueItem):
-        """Fetch video title in background thread."""
-        thread = TitleFetchThread(queue_item.url)
-        thread.title_fetched.connect(self.on_title_fetched)
-        thread.fetch_failed.connect(self.on_title_fetch_failed)
-        thread.finished.connect(
-            lambda: self.title_fetch_threads.remove(thread))
-        self.title_fetch_threads.append(thread)
-        thread.start()
-
-    def on_title_fetched(self, url: str, title: str):
-        """Handle successful title fetch."""
-        for item in self.download_queue:
-            if item.url == url:
-                item.title = title
-                self.update_queue_display()
-                break
-
-    def on_title_fetch_failed(self, url: str, _error: str):
-        """Handle failed title fetch."""
-        for item in self.download_queue:
-            if item.url == url:
-                item.title = url  # Fallback to showing URL
-                self.update_queue_display()
-                break
-
-    def show_queue_context_menu(self, position):
-        """Show context menu for queue list."""
-        if not self.queue_list.itemAt(position):
-            return
-
-        menu = QMenu()
-        current_row = self.queue_list.currentRow()
-
-        # Remove action
-        remove_action = QAction("🗑️ Remove from Queue", self)
-        remove_action.triggered.connect(self.remove_selected_from_queue)
-        menu.addAction(remove_action)
-
-        menu.addSeparator()
-
-        # Move up/down actions
-        move_up_action = QAction("⬆️ Move Up", self)
-        move_up_action.triggered.connect(self.move_queue_item_up)
-        move_up_action.setEnabled(current_row > 0)
-        menu.addAction(move_up_action)
-
-        move_down_action = QAction("⬇️ Move Down", self)
-        move_down_action.triggered.connect(self.move_queue_item_down)
-        move_down_action.setEnabled(current_row < len(self.download_queue) - 1)
-        menu.addAction(move_down_action)
-
-        menu.addSeparator()
-
-        # Clear all action
-        clear_action = QAction("🗑️ Clear All", self)
-        clear_action.triggered.connect(self.clear_queue)
-        menu.addAction(clear_action)
-
-        menu.exec_(self.queue_list.mapToGlobal(position))
-
-    def remove_selected_from_queue(self):
-        """Remove the selected item from queue."""
-        current_row = self.queue_list.currentRow()
-        if 0 <= current_row < len(self.download_queue):
-            self.download_queue.pop(current_row)
-            self.update_queue_display()
-
-    def move_queue_item_up(self):
-        """Move selected queue item up."""
-        current_row = self.queue_list.currentRow()
-        if current_row > 0:
-            self.download_queue[current_row], self.download_queue[current_row - 1] = \
-                self.download_queue[current_row -
-                                    1], self.download_queue[current_row]
-            self.update_queue_display()
-            self.queue_list.setCurrentRow(current_row - 1)
-
-    def move_queue_item_down(self):
-        """Move selected queue item down."""
-        current_row = self.queue_list.currentRow()
-        if current_row < len(self.download_queue) - 1:
-            self.download_queue[current_row], self.download_queue[current_row + 1] = \
-                self.download_queue[current_row +
-                                    1], self.download_queue[current_row]
-            self.update_queue_display()
-            self.queue_list.setCurrentRow(current_row + 1)
-
-    def clear_queue(self):
-        """Clear all items from queue."""
-        if self.download_queue:
-            reply = QMessageBox.question(
-                self,
-                "Clear Queue",
-                "Are you sure you want to clear all items from the queue?",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.No
-            )
-            if reply == QMessageBox.Yes:
-                self.download_queue.clear()
-                self.update_queue_display()
-
     def enqueue_download(self):
         """Add the current URL to the download queue."""
         url = self.url_input.text().strip()
@@ -888,7 +780,7 @@ class YouTubeDownloader(QWidget):
             return
 
         # Check for duplicates
-        if any(item.url == url for item in self.download_queue):
+        if self.queue_manager and self.queue_manager.has_duplicate(url):
             QMessageBox.warning(
                 self,
                 "Duplicate URL",
@@ -909,21 +801,16 @@ class YouTubeDownloader(QWidget):
             status=QueueStatus.WAITING
         )
 
-        # Add to queue
-        self.download_queue.append(queue_item)
-
-        # Update display
-        self.update_queue_display()
-
-        # Fetch title in background
-        self.fetch_video_title(queue_item)
+        # Add to queue via queue manager
+        if self.queue_manager:
+            self.queue_manager.add_item(queue_item)
 
         # Clear input
         self.url_input.clear()
 
     def start_queue(self):
         """Start downloading all items in the queue."""
-        if not self.download_queue:
+        if not self.queue_manager or self.queue_manager.is_empty():
             QMessageBox.information(self, "Info", "No URLs in the queue.")
             return
 
@@ -933,19 +820,16 @@ class YouTubeDownloader(QWidget):
 
     def download_next(self):
         """Download the next URL in the queue."""
-        if not self.download_queue:
+        if not self.queue_manager:
+            return
+
+        queue_item = self.queue_manager.pop_next()
+        if not queue_item:
             self.status_label.setText("Status: All downloads complete.")
             self.downloading = False
             return
 
-        # Pop the next item from the queue
-        queue_item = self.download_queue.pop(0)
         url = queue_item.url
-
-        # Update item status
-        queue_item.status = QueueStatus.DOWNLOADING
-        self.update_queue_display()
-
         self.status_label.setText(
             f"Status: Downloading {queue_item.title or url}")
         self.downloading = True
