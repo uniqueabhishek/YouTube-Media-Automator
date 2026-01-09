@@ -3,10 +3,17 @@
 This module handles all queue-related operations including display updates,
 title fetching, and context menu actions.
 """
-from PyQt5.QtCore import QObject, pyqtSignal  # type: ignore
-from PyQt5.QtWidgets import QAction, QListWidget, QMenu, QMessageBox  # type: ignore
+from PyQt5.QtCore import QObject, QSize, pyqtSignal  # type: ignore
+from PyQt5.QtWidgets import (  # type: ignore
+    QAction,
+    QListWidget,
+    QListWidgetItem,
+    QMenu,
+    QMessageBox,
+)
 
 from queue_item import QueueItem, QueueStatus
+from queue_item_widget import QueueItemWidget
 from title_fetch_thread import TitleFetchThread
 
 
@@ -28,24 +35,32 @@ class QueueManager(QObject):
         self.download_queue: list[QueueItem] = []
         self.title_fetch_threads: list[TitleFetchThread] = []
 
-        # Connect double-click to remove item
-        self.queue_list.itemDoubleClicked.connect(self._on_item_double_clicked)
-
-    def _on_item_double_clicked(self, item):
-        """Handle double-click on queue item to remove it."""
-        row = self.queue_list.row(item)
-        if 0 <= row < len(self.download_queue):
-            self.download_queue.pop(row)
-            self.update_display()
-
     def update_display(self):
         """Update the queue list widget to show current queue state."""
         self.queue_list.clear()
-        for index, item in enumerate(self.download_queue, start=1):
+        for index, item in enumerate(self.download_queue):
             icon = item.get_status_icon()
             text = item.get_display_text()
-            self.queue_list.addItem(f"❌ #{index} {icon} {text}")
+            display_text = f"#{index + 1} {icon} {text}"
+
+            # Create list item
+            list_item = QListWidgetItem(self.queue_list)
+            list_item.setSizeHint(QSize(0, 30))  # Set height for the widget
+
+            # Create custom widget
+            widget = QueueItemWidget(index, display_text)
+            widget.remove_clicked.connect(self._on_remove_clicked)
+
+            # Add widget to list item
+            self.queue_list.setItemWidget(list_item, widget)
+
         self.queue_updated.emit()
+
+    def _on_remove_clicked(self, index: int):
+        """Handle remove button click."""
+        if 0 <= index < len(self.download_queue):
+            self.download_queue.pop(index)
+            self.update_display()
 
     def add_item(self, queue_item: QueueItem):
         """Add an item to the queue.
