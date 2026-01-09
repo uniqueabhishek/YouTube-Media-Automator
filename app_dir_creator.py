@@ -1,11 +1,7 @@
 # app_dir_creator.py
 
 import os
-import shutil
-import subprocess
 import sys
-import urllib.request
-import zipfile
 
 APP_NAME = "My YT Downloads"
 FFMPEG_URL = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip"
