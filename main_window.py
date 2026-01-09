@@ -660,12 +660,25 @@ class YouTubeDownloader(QWidget):
 
         # Fix selection colors so text is visible when selected
         self.queue_list.setStyleSheet("""
+            QListWidget::item {
+                border-bottom: 1px solid #E0E0E0;
+                padding: 2px;
+            }
             QListWidget::item:selected {
-                background-color: #0078D7;
-                color: white;
+                background-color: #E5F3FF;
+                color: black;
+                border: 1px solid #99D1FF;
+            }
+            QListWidget::item:selected:active {
+                background-color: #E5F3FF;
+                color: black;
+            }
+            QListWidget::item:selected:!active {
+                background-color: #F0F8FF;
+                color: black;
             }
             QListWidget::item:hover {
-                background-color: #E5F3FF;
+                background-color: #F5F5F5;
                 color: black;
             }
         """)
