@@ -752,23 +752,6 @@ class YouTubeDownloader(QWidget):
     def select_output_folder(self):
         """Open a dialog to select the output folder."""
         folder = QFileDialog.getExistingDirectory(self, "Select Output Folder")
-        if folder:
-            self.output_folder = folder
-            self.saved_folder_label.setText(f"📁 {self.output_folder}")
-
-    # ----------------------- Queue -----------------------
-    def update_queue_display(self):
-        """Update the queue list widget to show current queue state."""
-        self.queue_list.clear()
-        for item in self.download_queue:
-            icon = item.get_status_icon()
-            text = item.get_display_text()
-            self.queue_list.addItem(f"{icon} {text}")
-
-    def fetch_video_title(self, queue_item: QueueItem):
-        """Fetch video title in background thread."""
-        thread = TitleFetchThread(queue_item.url)
-        thread.title_fetched.connect(self.on_title_fetched)
         thread.fetch_failed.connect(self.on_title_fetch_failed)
         thread.finished.connect(
             lambda: self.title_fetch_threads.remove(thread))
@@ -790,6 +773,7 @@ class YouTubeDownloader(QWidget):
                 item.title = url  # Fallback to showing URL
                 self.update_queue_display()
                 break
+
     def show_queue_context_menu(self, position):
         """Show context menu for queue list."""
         if not self.queue_list.itemAt(position):
@@ -837,7 +821,8 @@ class YouTubeDownloader(QWidget):
         current_row = self.queue_list.currentRow()
         if current_row > 0:
             self.download_queue[current_row], self.download_queue[current_row - 1] = \
-                self.download_queue[current_row - 1], self.download_queue[current_row]
+                self.download_queue[current_row -
+                                    1], self.download_queue[current_row]
             self.update_queue_display()
             self.queue_list.setCurrentRow(current_row - 1)
 
@@ -846,7 +831,8 @@ class YouTubeDownloader(QWidget):
         current_row = self.queue_list.currentRow()
         if current_row < len(self.download_queue) - 1:
             self.download_queue[current_row], self.download_queue[current_row + 1] = \
-                self.download_queue[current_row + 1], self.download_queue[current_row]
+                self.download_queue[current_row +
+                                    1], self.download_queue[current_row]
             self.update_queue_display()
             self.queue_list.setCurrentRow(current_row + 1)
 
@@ -863,8 +849,6 @@ class YouTubeDownloader(QWidget):
             if reply == QMessageBox.Yes:
                 self.download_queue.clear()
                 self.update_queue_display()
-
-
 
     def enqueue_download(self):
         """Add the current URL to the download queue."""
@@ -1072,4 +1056,3 @@ if __name__ == "__main__":
     window = YouTubeDownloader()
     window.show()
     sys.exit(app.exec_())
-
