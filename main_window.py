@@ -38,7 +38,7 @@ from app_dir_creator import (
     get_database_path,
     get_download_folder,
 )
-from database_handler import record_history, setup_database
+from database_handler import DatabaseManager, init_db
 
 # import subprocess
 from download_thread import DownloadThread
@@ -395,7 +395,8 @@ class YouTubeDownloader(QWidget):
         # Now set as instance variables
         self.ffmpeg_path = ffmpeg_path
         self.output_folder = download_folder
-        self.conn, self.db_cursor = setup_database(db_path)
+        self.db_path = db_path
+        init_db(self.db_path)
 
         # ---------------------------------------------------
 
@@ -891,7 +892,8 @@ class YouTubeDownloader(QWidget):
     def download_finished(self, _success, message, url, title, path, status):
         """Handle download completion and record to history."""
         self.downloading = False
-        record_history(self.db_cursor, self.conn, url, title, path, status)
+        with DatabaseManager(self.db_path) as db:
+            db.record_history(url, title, path, status)
         self.progress_bar.setValue(0)
         self.cancel_button.setEnabled(False)
 
