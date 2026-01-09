@@ -441,9 +441,9 @@ class YouTubeDownloader(QWidget):
             shadow.setOffset(*offset)
             widget.setGraphicsEffect(shadow)
 
-        add_shadow(self.add_queue_btn)
-        add_shadow(self.download_btn)
-        add_shadow(self.cancel_btn)
+        add_shadow(self.enqueue_button)
+        add_shadow(self.download_button)
+        add_shadow(self.cancel_button)
 
         layout.addWidget(content)
         self.setLayout(layout)  # Finalize the layout
