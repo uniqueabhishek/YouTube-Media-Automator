@@ -24,14 +24,18 @@ class QueueItemWidget(QWidget):
         layout.setContentsMargins(2, 2, 2, 2)
         layout.setSpacing(2)
 
-        # Remove button (❌)
-        self.remove_btn = QPushButton("❌")
-        self.remove_btn.setFixedSize(12, 16)
+        # Remove button (x)
+        self.remove_btn = QPushButton("x")
+        self.remove_btn.setFixedSize(14, 16)
         self.remove_btn.setStyleSheet("""
             QPushButton {
+                color: red;
                 background-color: transparent;
                 border: none;
-                font-size: 10px;
+                font-weight: bold;
+                font-size: 14px;
+                padding_bottom: 2px;
+            }
                 padding: 0px;
             }
             QPushButton:hover {
