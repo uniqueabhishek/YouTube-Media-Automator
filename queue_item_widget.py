@@ -24,21 +24,28 @@ class QueueItemWidget(QWidget):
         layout.setContentsMargins(2, 2, 2, 2)
         layout.setSpacing(2)
 
-        # Remove button (x)
-        self.remove_btn = QPushButton("x")
-        self.remove_btn.setFixedSize(14, 16)
+        # Remove button (×)
+        self.remove_btn = QPushButton("×")
+        self.remove_btn.setFixedSize(16, 16)
+        self.remove_btn.setCursor(Qt.PointingHandCursor)
         self.remove_btn.setStyleSheet("""
             QPushButton {
-                color: red;
+                color: #FF0000;
                 background-color: transparent;
                 border: none;
                 font-weight: bold;
-                font-size: 14px;
-                padding-bottom: 2px;
+                font-size: 16px;
+                padding: 0px;
                 margin: 0px;
+                line-height: 16px;
             }
             QPushButton:hover {
                 background-color: #FFE5E5;
+                border-radius: 8px;
+            }
+        """)
+            QPushButton: hover {
+                background-color:  # FFE5E5;
                 border-radius: 2px;
             }
         """)
