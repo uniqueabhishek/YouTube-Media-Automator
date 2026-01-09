@@ -715,6 +715,18 @@ class YouTubeDownloader(QWidget):
             QSizePolicy.Expanding, QSizePolicy.Fixed)
         content_layout.addWidget(self.status_label, 0)
 
+        # ---------------- Drop Shadow Effects ----------------
+        def add_shadow(widget, color=QColor(0, 0, 0, 100), blur=15, offset=(0, 5)):
+            shadow = QGraphicsDropShadowEffect(self)
+            shadow.setBlurRadius(blur)
+            shadow.setColor(color)
+            shadow.setOffset(*offset)
+            widget.setGraphicsEffect(shadow)
+
+        add_shadow(self.add_queue_btn)
+        add_shadow(self.download_btn)
+        add_shadow(self.cancel_btn)
+
         layout.addWidget(content)
         self.setLayout(layout)  # Finalize the layout
 
