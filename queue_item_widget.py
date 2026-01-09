@@ -58,6 +58,7 @@ class QueueItemWidget(QWidget):
 
         # Text label
         self.text_label = QLabel(text)
+        self.text_label.setWordWrap(True)
         self.text_label.setStyleSheet(
             "color: black; background-color: transparent;")
         layout.addWidget(self.text_label, 1)  # Stretch factor 1
