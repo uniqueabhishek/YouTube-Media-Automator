@@ -666,6 +666,7 @@ class YouTubeDownloader(QWidget):
             }
             QListWidget::item:hover {
                 background-color: #E5F3FF;
+                color: black;
             }
         """)
         # Initialize queue manager
