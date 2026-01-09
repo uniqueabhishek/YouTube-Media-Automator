@@ -45,6 +45,8 @@ class QueueItemWidget(QWidget):
                 max-width: 16px;
                 min-height: 16px;
                 max-height: 16px;
+                padding-bottom: 3px;
+                text-align: center;
             }
             QPushButton:hover {
                 background-color: #FF0000;
