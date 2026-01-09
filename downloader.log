@@ -236,3 +236,171 @@
 2026-01-10 00:14:20.695 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] APkBClOJSoY: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
 2026-01-10 00:14:20.843 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] APkBClOJSoY: Downloading 1 format(s): 398+251-1
 2026-01-10 00:14:20.867 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [download] D:\D Desktop\Venezuela_Crisis_How_USA_Attack_on_Venezuela_How_USA_kidnapped_Nicolas_Maduro_Delta_Force.webm has already been downloaded
+2026-01-10 01:38:00.246 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=cEiXvxkQjE0
+2026-01-10 01:38:00.247 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] cEiXvxkQjE0: Downloading webpage
+2026-01-10 01:38:01.102 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-01-10 01:38:01.107 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] cEiXvxkQjE0: Downloading android sdkless player API JSON
+2026-01-10 01:38:01.287 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] cEiXvxkQjE0: Downloading web safari player API JSON
+2026-01-10 01:38:01.539 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] cEiXvxkQjE0: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-01-10 01:38:01.543 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] cEiXvxkQjE0: Downloading m3u8 information
+2026-01-10 01:38:01.979 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] cEiXvxkQjE0: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-01-10 01:38:02.093 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] cEiXvxkQjE0: Downloading 1 format(s): 136+140
+2026-01-10 01:38:02.251 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [download] Destination: D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f136.mp4
+2026-01-10 01:38:02.252 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   72.05MiB at [0;32m 151.14KiB/s[0m ETA [0;33m08:08[0m
+2026-01-10 01:38:02.253 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   72.05MiB at [0;32m 400.76KiB/s[0m ETA [0;33m03:04[0m
+2026-01-10 01:38:02.253 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   72.05MiB at [0;32m 859.14KiB/s[0m ETA [0;33m01:25[0m
+2026-01-10 01:38:02.254 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   72.05MiB at [0;32m   1.62MiB/s[0m ETA [0;33m00:44[0m
+2026-01-10 01:38:02.277 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   72.05MiB at [0;32m 961.18KiB/s[0m ETA [0;33m01:16[0m
+2026-01-10 01:38:02.303 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.1%[0m of   72.05MiB at [0;32m   1.07MiB/s[0m ETA [0;33m01:07[0m
+2026-01-10 01:38:02.342 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.2%[0m of   72.05MiB at [0;32m   1.28MiB/s[0m ETA [0;33m00:56[0m
+2026-01-10 01:38:02.459 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.3%[0m of   72.05MiB at [0;32m   1.16MiB/s[0m ETA [0;33m01:01[0m
+2026-01-10 01:38:02.596 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.7%[0m of   72.05MiB at [0;32m   1.42MiB/s[0m ETA [0;33m00:50[0m
+2026-01-10 01:38:02.767 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  1.4%[0m of   72.05MiB at [0;32m   1.91MiB/s[0m ETA [0;33m00:37[0m
+2026-01-10 01:38:03.107 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  2.8%[0m of   72.05MiB at [0;32m   2.32MiB/s[0m ETA [0;33m00:30[0m
+2026-01-10 01:38:03.634 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  5.6%[0m of   72.05MiB at [0;32m   2.88MiB/s[0m ETA [0;33m00:23[0m
+2026-01-10 01:38:04.761 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 10.8%[0m of   72.05MiB at [0;32m   3.10MiB/s[0m ETA [0;33m00:20[0m
+2026-01-10 01:38:05.312 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m   3.21MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:05.525 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m 424.78KiB/s[0m ETA [0;33m02:30[0m
+2026-01-10 01:38:05.526 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m 814.32KiB/s[0m ETA [0;33m01:18[0m
+2026-01-10 01:38:05.527 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m   1.44MiB/s[0m ETA [0;33m00:43[0m
+2026-01-10 01:38:05.528 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m   2.52MiB/s[0m ETA [0;33m00:24[0m
+2026-01-10 01:38:05.529 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.7%[0m of   72.05MiB at [0;32m   4.53MiB/s[0m ETA [0;33m00:13[0m
+2026-01-10 01:38:05.535 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.8%[0m of   72.05MiB at [0;32m   5.11MiB/s[0m ETA [0;33m00:12[0m
+2026-01-10 01:38:05.555 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 13.9%[0m of   72.05MiB at [0;32m   3.87MiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:05.576 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 14.0%[0m of   72.05MiB at [0;32m   4.69MiB/s[0m ETA [0;33m00:13[0m
+2026-01-10 01:38:05.636 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 14.4%[0m of   72.05MiB at [0;32m   4.39MiB/s[0m ETA [0;33m00:14[0m
+2026-01-10 01:38:05.745 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 15.1%[0m of   72.05MiB at [0;32m   4.50MiB/s[0m ETA [0;33m00:13[0m
+2026-01-10 01:38:06.008 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 16.5%[0m of   72.05MiB at [0;32m   4.12MiB/s[0m ETA [0;33m00:14[0m
+2026-01-10 01:38:06.602 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 19.2%[0m of   72.05MiB at [0;32m   3.71MiB/s[0m ETA [0;33m00:15[0m
+2026-01-10 01:38:07.544 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 23.9%[0m of   72.05MiB at [0;32m   3.65MiB/s[0m ETA [0;33m00:15[0m
+2026-01-10 01:38:08.348 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.5%[0m of   72.05MiB at [0;32m   3.53MiB/s[0m ETA [0;33m00:14[0m
+2026-01-10 01:38:08.557 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.5%[0m of   72.05MiB at [0;32m Unknown B/s[0m ETA [0;33mUnknown[0m
+2026-01-10 01:38:08.558 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.5%[0m of   72.05MiB at [0;32m   1.93MiB/s[0m ETA [0;33m00:27[0m
+2026-01-10 01:38:08.559 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.5%[0m of   72.05MiB at [0;32m   2.69MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:08.559 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.6%[0m of   72.05MiB at [0;32m   4.27MiB/s[0m ETA [0;33m00:12[0m
+2026-01-10 01:38:08.560 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.6%[0m of   72.05MiB at [0;32m   7.06MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:08.570 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.6%[0m of   72.05MiB at [0;32m   4.28MiB/s[0m ETA [0;33m00:12[0m
+2026-01-10 01:38:08.611 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.7%[0m of   72.05MiB at [0;32m   2.24MiB/s[0m ETA [0;33m00:23[0m
+2026-01-10 01:38:08.673 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 27.9%[0m of   72.05MiB at [0;32m   2.14MiB/s[0m ETA [0;33m00:24[0m
+2026-01-10 01:38:08.769 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 28.2%[0m of   72.05MiB at [0;32m   2.34MiB/s[0m ETA [0;33m00:22[0m
+2026-01-10 01:38:08.933 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 28.9%[0m of   72.05MiB at [0;32m   2.65MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:09.322 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 30.3%[0m of   72.05MiB at [0;32m   2.61MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:10.094 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 33.1%[0m of   72.05MiB at [0;32m   2.60MiB/s[0m ETA [0;33m00:18[0m
+2026-01-10 01:38:11.018 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 36.7%[0m of   72.05MiB at [0;32m   2.68MiB/s[0m ETA [0;33m00:17[0m
+2026-01-10 01:38:11.964 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 40.6%[0m of   72.05MiB at [0;32m   2.76MiB/s[0m ETA [0;33m00:15[0m
+2026-01-10 01:38:12.068 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m   2.75MiB/s[0m ETA [0;33m00:15[0m
+2026-01-10 01:38:12.115 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m 183.03KiB/s[0m ETA [0;33m03:58[0m
+2026-01-10 01:38:12.116 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m 436.45KiB/s[0m ETA [0;33m01:39[0m
+2026-01-10 01:38:12.118 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m 855.46KiB/s[0m ETA [0;33m00:50[0m
+2026-01-10 01:38:12.119 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m   1.59MiB/s[0m ETA [0;33m00:26[0m
+2026-01-10 01:38:12.121 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m   2.70MiB/s[0m ETA [0;33m00:15[0m
+2026-01-10 01:38:12.133 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.0%[0m of   72.05MiB at [0;32m   2.61MiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:12.146 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.1%[0m of   72.05MiB at [0;32m   3.47MiB/s[0m ETA [0;33m00:12[0m
+2026-01-10 01:38:12.226 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.3%[0m of   72.05MiB at [0;32m   2.15MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:12.335 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 41.6%[0m of   72.05MiB at [0;32m   2.22MiB/s[0m ETA [0;33m00:18[0m
+2026-01-10 01:38:12.517 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 42.3%[0m of   72.05MiB at [0;32m   2.45MiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:12.825 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 43.7%[0m of   72.05MiB at [0;32m   2.79MiB/s[0m ETA [0;33m00:14[0m
+2026-01-10 01:38:13.373 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 46.5%[0m of   72.05MiB at [0;32m   3.17MiB/s[0m ETA [0;33m00:12[0m
+2026-01-10 01:38:14.443 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 51.6%[0m of   72.05MiB at [0;32m   3.28MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:15.054 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.1%[0m of   72.05MiB at [0;32m   3.23MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:15.277 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.1%[0m of   72.05MiB at [0;32m 433.03KiB/s[0m ETA [0;33m01:18[0m
+2026-01-10 01:38:15.278 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.2%[0m of   72.05MiB at [0;32m 921.22KiB/s[0m ETA [0;33m00:36[0m
+2026-01-10 01:38:15.279 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.2%[0m of   72.05MiB at [0;32m   1.73MiB/s[0m ETA [0;33m00:19[0m
+2026-01-10 01:38:15.279 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.2%[0m of   72.05MiB at [0;32m   3.19MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:15.284 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.2%[0m of   72.05MiB at [0;32m   3.13MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:15.295 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.2%[0m of   72.05MiB at [0;32m   3.09MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:15.303 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.3%[0m of   72.05MiB at [0;32m   4.38MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:15.334 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.5%[0m of   72.05MiB at [0;32m   4.19MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:15.406 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 54.8%[0m of   72.05MiB at [0;32m   3.80MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:15.529 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 55.5%[0m of   72.05MiB at [0;32m   3.92MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:15.827 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 56.9%[0m of   72.05MiB at [0;32m   3.62MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:16.417 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 59.7%[0m of   72.05MiB at [0;32m   3.50MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:17.463 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 64.4%[0m of   72.05MiB at [0;32m   3.37MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:18.470 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.7%[0m of   72.05MiB at [0;32m   3.06MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:18.538 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.7%[0m of   72.05MiB at [0;32m  55.43KiB/s[0m ETA [0;33m07:09[0m
+2026-01-10 01:38:18.539 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.7%[0m of   72.05MiB at [0;32m 156.40KiB/s[0m ETA [0;33m02:32[0m
+2026-01-10 01:38:18.540 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.7%[0m of   72.05MiB at [0;32m 350.79KiB/s[0m ETA [0;33m01:07[0m
+2026-01-10 01:38:18.541 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.8%[0m of   72.05MiB at [0;32m 727.17KiB/s[0m ETA [0;33m00:32[0m
+2026-01-10 01:38:18.541 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.8%[0m of   72.05MiB at [0;32m   1.42MiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:18.542 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.8%[0m of   72.05MiB at [0;32m   2.77MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:18.572 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 67.9%[0m of   72.05MiB at [0;32m   2.37MiB/s[0m ETA [0;33m00:09[0m
+2026-01-10 01:38:18.625 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 68.1%[0m of   72.05MiB at [0;32m   2.37MiB/s[0m ETA [0;33m00:09[0m
+2026-01-10 01:38:18.719 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 68.4%[0m of   72.05MiB at [0;32m   2.51MiB/s[0m ETA [0;33m00:09[0m
+2026-01-10 01:38:19.017 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 69.1%[0m of   72.05MiB at [0;32m   2.01MiB/s[0m ETA [0;33m00:11[0m
+2026-01-10 01:38:19.444 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 70.5%[0m of   72.05MiB at [0;32m   2.16MiB/s[0m ETA [0;33m00:09[0m
+2026-01-10 01:38:20.241 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 73.3%[0m of   72.05MiB at [0;32m   2.32MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:21.550 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 76.8%[0m of   72.05MiB at [0;32m   2.15MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:22.387 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 79.4%[0m of   72.05MiB at [0;32m   2.18MiB/s[0m ETA [0;33m00:06[0m
+2026-01-10 01:38:22.735 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 80.9%[0m of   72.05MiB at [0;32m   2.26MiB/s[0m ETA [0;33m00:06[0m
+2026-01-10 01:38:22.964 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 80.9%[0m of   72.05MiB at [0;32m  76.34KiB/s[0m ETA [0;33m03:04[0m
+2026-01-10 01:38:22.966 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 80.9%[0m of   72.05MiB at [0;32m 202.53KiB/s[0m ETA [0;33m01:09[0m
+2026-01-10 01:38:22.967 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 80.9%[0m of   72.05MiB at [0;32m 436.44KiB/s[0m ETA [0;33m00:32[0m
+2026-01-10 01:38:22.968 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 80.9%[0m of   72.05MiB at [0;32m 874.08KiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:22.969 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 81.0%[0m of   72.05MiB at [0;32m   1.65MiB/s[0m ETA [0;33m00:08[0m
+2026-01-10 01:38:22.975 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 81.0%[0m of   72.05MiB at [0;32m   2.50MiB/s[0m ETA [0;33m00:05[0m
+2026-01-10 01:38:22.996 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 81.1%[0m of   72.05MiB at [0;32m   2.73MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:23.039 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 81.3%[0m of   72.05MiB at [0;32m   2.83MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:23.100 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 81.6%[0m of   72.05MiB at [0;32m   3.36MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:23.253 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 82.3%[0m of   72.05MiB at [0;32m   3.30MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:23.680 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 83.7%[0m of   72.05MiB at [0;32m   2.74MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:24.225 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 86.5%[0m of   72.05MiB at [0;32m   3.14MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:25.334 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 91.6%[0m of   72.05MiB at [0;32m   3.22MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:25.981 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.5%[0m of   72.05MiB at [0;32m   3.23MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.136 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.5%[0m of   72.05MiB at [0;32m  90.36KiB/s[0m ETA [0;33m00:44[0m
+2026-01-10 01:38:26.137 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.5%[0m of   72.05MiB at [0;32m 249.30KiB/s[0m ETA [0;33m00:16[0m
+2026-01-10 01:38:26.138 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.5%[0m of   72.05MiB at [0;32m 553.71KiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:26.139 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.5%[0m of   72.05MiB at [0;32m   1.10MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:26.139 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.6%[0m of   72.05MiB at [0;32m   2.17MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.153 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.6%[0m of   72.05MiB at [0;32m   2.20MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.169 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.7%[0m of   72.05MiB at [0;32m   2.86MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.214 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 94.9%[0m of   72.05MiB at [0;32m   2.82MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.305 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 95.2%[0m of   72.05MiB at [0;32m   2.77MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.471 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 95.9%[0m of   72.05MiB at [0;32m   2.89MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:26.786 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 97.3%[0m of   72.05MiB at [0;32m   3.03MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:27.497 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m100.0%[0m of   72.05MiB at [0;32m   2.88MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:27.498 | DEBUG    | yt_dlp.minicurses:write:111 - [download] 100% of   72.05MiB in [1;37m00:00:25[0m at [0;32m2.84MiB/s[0m
+2026-01-10 01:38:27.727 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [download] Destination: D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f140.m4a
+2026-01-10 01:38:27.728 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   21.79MiB at [0;32m 162.64KiB/s[0m ETA [0;33m02:17[0m
+2026-01-10 01:38:27.729 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   21.79MiB at [0;32m 419.86KiB/s[0m ETA [0;33m00:53[0m
+2026-01-10 01:38:27.730 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.0%[0m of   21.79MiB at [0;32m 832.01KiB/s[0m ETA [0;33m00:26[0m
+2026-01-10 01:38:27.730 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.1%[0m of   21.79MiB at [0;32m   1.60MiB/s[0m ETA [0;33m00:13[0m
+2026-01-10 01:38:27.731 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.1%[0m of   21.79MiB at [0;32m   3.06MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:27.750 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.3%[0m of   21.79MiB at [0;32m   2.16MiB/s[0m ETA [0;33m00:10[0m
+2026-01-10 01:38:27.773 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  0.6%[0m of   21.79MiB at [0;32m   2.39MiB/s[0m ETA [0;33m00:09[0m
+2026-01-10 01:38:27.808 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  1.1%[0m of   21.79MiB at [0;32m   2.89MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:27.903 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  2.3%[0m of   21.79MiB at [0;32m   2.74MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:28.057 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  4.6%[0m of   21.79MiB at [0;32m   2.97MiB/s[0m ETA [0;33m00:06[0m
+2026-01-10 01:38:28.384 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m  9.2%[0m of   21.79MiB at [0;32m   3.02MiB/s[0m ETA [0;33m00:06[0m
+2026-01-10 01:38:29.174 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 18.4%[0m of   21.79MiB at [0;32m   2.75MiB/s[0m ETA [0;33m00:06[0m
+2026-01-10 01:38:29.931 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 30.0%[0m of   21.79MiB at [0;32m   2.96MiB/s[0m ETA [0;33m00:05[0m
+2026-01-10 01:38:31.067 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.8%[0m of   21.79MiB at [0;32m   2.91MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:31.165 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.8%[0m of   21.79MiB at [0;32m  79.36KiB/s[0m ETA [0;33m02:35[0m
+2026-01-10 01:38:31.166 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.8%[0m of   21.79MiB at [0;32m 213.77KiB/s[0m ETA [0;33m00:57[0m
+2026-01-10 01:38:31.167 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.8%[0m of   21.79MiB at [0;32m 463.43KiB/s[0m ETA [0;33m00:26[0m
+2026-01-10 01:38:31.168 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.8%[0m of   21.79MiB at [0;32m 938.80KiB/s[0m ETA [0;33m00:13[0m
+2026-01-10 01:38:31.170 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 44.9%[0m of   21.79MiB at [0;32m   1.68MiB/s[0m ETA [0;33m00:07[0m
+2026-01-10 01:38:31.171 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 45.0%[0m of   21.79MiB at [0;32m   3.26MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:31.192 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 45.3%[0m of   21.79MiB at [0;32m   3.08MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:31.249 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 45.9%[0m of   21.79MiB at [0;32m   2.56MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:31.331 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 47.0%[0m of   21.79MiB at [0;32m   2.79MiB/s[0m ETA [0;33m00:04[0m
+2026-01-10 01:38:31.480 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 49.3%[0m of   21.79MiB at [0;32m   3.05MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:31.837 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 53.9%[0m of   21.79MiB at [0;32m   2.92MiB/s[0m ETA [0;33m00:03[0m
+2026-01-10 01:38:32.519 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 63.1%[0m of   21.79MiB at [0;32m   2.92MiB/s[0m ETA [0;33m00:02[0m
+2026-01-10 01:38:33.440 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 76.6%[0m of   21.79MiB at [0;32m   3.03MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:35.541 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 88.8%[0m of   21.79MiB at [0;32m   2.19MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:35.787 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 88.8%[0m of   21.79MiB at [0;32m Unknown B/s[0m ETA [0;33mUnknown[0m
+2026-01-10 01:38:35.788 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 88.8%[0m of   21.79MiB at [0;32m   1.75MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:35.789 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 88.9%[0m of   21.79MiB at [0;32m   2.39MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:35.790 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 88.9%[0m of   21.79MiB at [0;32m   3.66MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:35.791 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 89.0%[0m of   21.79MiB at [0;32m   5.78MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:35.803 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 89.1%[0m of   21.79MiB at [0;32m   3.64MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:35.836 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 89.4%[0m of   21.79MiB at [0;32m   2.47MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:35.917 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 90.0%[0m of   21.79MiB at [0;32m   1.91MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:36.090 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 91.1%[0m of   21.79MiB at [0;32m   1.64MiB/s[0m ETA [0;33m00:01[0m
+2026-01-10 01:38:36.357 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 93.4%[0m of   21.79MiB at [0;32m   1.75MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:36.699 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m 98.0%[0m of   21.79MiB at [0;32m   2.19MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:36.827 | DEBUG    | yt_dlp.minicurses:write:111 - [download] [0;94m100.0%[0m of   21.79MiB at [0;32m   2.34MiB/s[0m ETA [0;33m00:00[0m
+2026-01-10 01:38:36.829 | DEBUG    | yt_dlp.minicurses:write:111 - [download] 100% of   21.79MiB in [1;37m00:00:09[0m at [0;32m2.34MiB/s[0m
+2026-01-10 01:38:36.840 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [Merger] Merging formats into "D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.mp4"
+2026-01-10 01:38:37.232 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - Deleting original file D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f140.m4a (pass -k to keep)
+2026-01-10 01:38:37.235 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - Deleting original file D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f136.mp4 (pass -k to keep)

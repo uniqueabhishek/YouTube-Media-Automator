@@ -28,6 +28,16 @@ class QueueManager(QObject):
         self.download_queue: list[QueueItem] = []
         self.title_fetch_threads: list[TitleFetchThread] = []
 
+        # Connect double-click to remove item
+        self.queue_list.itemDoubleClicked.connect(self._on_item_double_clicked)
+
+    def _on_item_double_clicked(self, item):
+        """Handle double-click on queue item to remove it."""
+        row = self.queue_list.row(item)
+        if 0 <= row < len(self.download_queue):
+            self.download_queue.pop(row)
+            self.update_display()
+
     def update_display(self):
         """Update the queue list widget to show current queue state."""
         self.queue_list.clear()
