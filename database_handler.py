@@ -4,7 +4,6 @@ This module provides a DatabaseManager class to handle SQLite connections
 safely using context managers.
 """
 import sqlite3
-
 from typing import Optional
 
 
