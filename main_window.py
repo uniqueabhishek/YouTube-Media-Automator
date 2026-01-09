@@ -33,7 +33,7 @@ from PyQt5.QtWidgets import (  # type: ignore
     QWidget,
     QGraphicsDropShadowEffect,
 )
-from PyQt5.QtGui import QIcon, QColor
+from PyQt5.QtGui import QColor
 
 from app_dir_creator import get_database_path, get_download_folder
 from database_handler import DatabaseManager, init_db
