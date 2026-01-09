@@ -829,9 +829,9 @@ class YouTubeDownloader(QWidget):
 
         # --- Map selection to yt-dlp format codes ---
         if selected_item == "Super High WebM":
-            ydl_opts["format"] = "bestvideo+bestaudio"
+            ydl_opts["format"] = "bestvideo+bestaudio/best"
         elif selected_item == "Audio Only (MP3)":
-            ydl_opts["format"] = "bestaudio"
+            ydl_opts["format"] = "bestaudio/best"
             ydl_opts["postprocessors"] = [
                 {
                     "key": "FFmpegExtractAudio",
@@ -840,13 +840,26 @@ class YouTubeDownloader(QWidget):
                 }
             ]
         else:
-            # Regular video + audio
+            # Use flexible format selection with fallback
+            # Instead of hardcoded format IDs, use quality-based selection
             if isinstance(codes, dict):
-                ydl_opts["format"] = (
-                    f"{codes['video']}+{codes['audio']}"
-                    if codes.get("audio")
-                    else codes["video"]
-                )
+                # Try specific format codes first, but fall back to quality selector
+                video_code = codes.get("video", "")
+                audio_code = codes.get("audio", "")
+
+                # Determine target resolution from selection
+                if "1080p" in selected_item:
+                    quality_fallback = "bestvideo[height<=1080]+bestaudio/best[height<=1080]"
+                elif "720p" in selected_item:
+                    quality_fallback = "bestvideo[height<=720]+bestaudio/best[height<=720]"
+                else:
+                    quality_fallback = "bestvideo+bestaudio/best"
+
+                # Try specific codes first, then fall back
+                if video_code and audio_code:
+                    ydl_opts["format"] = f"{video_code}+{audio_code}/{quality_fallback}"
+                else:
+                    ydl_opts["format"] = quality_fallback
 
         # Start download thread
         self.download_thread = DownloadThread(url, ydl_opts)
