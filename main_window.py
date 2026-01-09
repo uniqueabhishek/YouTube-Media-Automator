@@ -659,6 +659,10 @@ class YouTubeDownloader(QWidget):
         self.queue_list = QListWidget()
         self.queue_list.setSizePolicy(
             QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # Enable right-click context menu
+        self.queue_list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.queue_list.customContextMenuRequested.connect(
+            self.show_queue_context_menu)
         content_layout.addWidget(self.queue_list)
 
         # ---------------- Progress Bar ---------------------
