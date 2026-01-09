@@ -760,11 +760,11 @@ class YouTubeDownloader(QWidget):
 
     def on_title_fetched(self, url: str, title: str):
         """Handle successful title fetch."""
-        for item in self.download_queue:
-            if item.url == url:
-                item.title = title
-                self.update_queue_display()
-                break
+        for index, item in enumerate(self.download_queue, start=1):
+            icon = item.get_status_icon()
+            text = item.get_display_text()
+            self.queue_list.addItem(f"#{index} {icon} {text}")
+            break
 
     def on_title_fetch_failed(self, url: str, error: str):
         """Handle failed title fetch."""
