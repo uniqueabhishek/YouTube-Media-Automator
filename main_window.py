@@ -849,9 +849,15 @@ class YouTubeDownloader(QWidget):
 
                 # Determine target resolution from selection
                 if "1080p" in selected_item:
-                    quality_fallback = "bestvideo[height<=1080]+bestaudio/best[height<=1080]"
+                    quality_fallback = (
+                        "bestvideo[height<=1080]+bestaudio/"
+                        "best[height<=1080]"
+                    )
                 elif "720p" in selected_item:
-                    quality_fallback = "bestvideo[height<=720]+bestaudio/best[height<=720]"
+                    quality_fallback = (
+                        "bestvideo[height<=720]+bestaudio/"
+                        "best[height<=720]"
+                    )
                 else:
                     quality_fallback = "bestvideo+bestaudio/best"
 
