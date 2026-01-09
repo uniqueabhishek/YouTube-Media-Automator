@@ -44,7 +44,7 @@ class QueueManager(QObject):
         for index, item in enumerate(self.download_queue, start=1):
             icon = item.get_status_icon()
             text = item.get_display_text()
-            self.queue_list.addItem(f"#{index} {icon} {text}")
+            self.queue_list.addItem(f"❌ #{index} {icon} {text}")
         self.queue_updated.emit()
 
     def add_item(self, queue_item: QueueItem):
