@@ -26,16 +26,17 @@ class QueueItemWidget(QWidget):
 
         # Remove button (❌)
         self.remove_btn = QPushButton("❌")
-        self.remove_btn.setFixedSize(20, 20)
+        self.remove_btn.setFixedSize(16, 16)
         self.remove_btn.setStyleSheet("""
             QPushButton {
                 background-color: transparent;
                 border: none;
-                font-size: 12px;
+                font-size: 10px;
+                padding: 0px;
             }
             QPushButton:hover {
                 background-color: #FFE5E5;
-                border-radius: 3px;
+                border-radius: 2px;
             }
         """)
         self.remove_btn.clicked.connect(
