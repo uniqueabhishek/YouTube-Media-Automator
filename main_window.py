@@ -33,11 +33,7 @@ from PyQt5.QtWidgets import (  # type: ignore
     QWidget,
 )
 
-from app_dir_creator import (
-    ensure_environment,
-    get_database_path,
-    get_download_folder,
-)
+from app_dir_creator import get_database_path, get_download_folder
 from database_handler import DatabaseManager, init_db
 
 # import subprocess
@@ -385,18 +381,13 @@ class YouTubeDownloader(QWidget):
             }
         """)
 
-        # ----Ensure app environment by app_dir_creator.py----
-        ffmpeg_path = ensure_environment()
-        print("FFmpeg path:", ffmpeg_path)
-
-        download_folder = get_download_folder()
-        db_path = get_database_path()
-
-        # Now set as instance variables
-        self.ffmpeg_path = ffmpeg_path
-        self.output_folder = download_folder
-        self.db_path = db_path
+        # Initialize app environment
+        self.output_folder = get_download_folder()
+        self.db_path = get_database_path()
         init_db(self.db_path)
+
+        # FFmpeg is bundled via static-ffmpeg package
+        self.ffmpeg_path = find_ffmpeg()
 
         # ---------------------------------------------------
 
@@ -427,25 +418,10 @@ class YouTubeDownloader(QWidget):
         # -------------------------------------------
 
         self.init_ui()
-        self.check_ffmpeg_on_startup()
         self.init_tray()
 
-    def check_ffmpeg_on_startup(self):
-        """Check for FFmpeg on startup using static-ffmpeg package."""
-        try:
-            self.ffmpeg_path = find_ffmpeg()
-            print(f"FFmpeg found at: {self.ffmpeg_path}")
-        except (OSError, FileNotFoundError, RuntimeError) as e:
-            print(f"FFmpeg error: {e}")
-            self.ffmpeg_path = None
-            QMessageBox.warning(
-                self,
-                "FFmpeg Missing",
-                f"FFmpeg codec not found: {e}\n"
-                "Please check your internet connection.",
-            )
-
     # ------------------Shows Dropwnlist format - size------------
+
     def fetch_format_sizes(self, url):
         """Fetch available format sizes for a given YouTube URL."""
         ydl_opts = {"quiet": True, "skip_download": True}
