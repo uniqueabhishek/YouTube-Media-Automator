@@ -121,6 +121,8 @@ class YouTubeDownloader(QWidget):
                 background-color: #ffffff;
                 color: #000000;
                 border: 1px solid #7eb4ea;
+                border-top: 1.5px solid #5a8ec4;
+                border-left: 1.5px solid #5a8ec4;
                 border-radius: 3px;
                 padding: 5px 8px;
                 selection-background-color: #3399ff;
@@ -150,6 +152,8 @@ class YouTubeDownloader(QWidget):
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 #d0e9f7, stop:0.4 #a9d9f0, stop:0.5 #7ac2e5, stop:1 #5eb6db);
                 border: 1px solid #2c628b;
+                margin-top: 1px;
+                margin-left: 1px;
             }
 
             QPushButton:disabled {
@@ -208,6 +212,8 @@ class YouTubeDownloader(QWidget):
                 background-color: #ffffff;
                 color: #000000;
                 border: 1px solid #7eb4ea;
+                border-top: 1.5px solid #5a8ec4;
+                border-left: 1.5px solid #5a8ec4;
                 border-radius: 3px;
                 padding: 2px;
             }
