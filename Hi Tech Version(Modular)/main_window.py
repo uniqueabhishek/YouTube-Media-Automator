@@ -77,8 +77,9 @@ class YouTubeDownloader(QWidget):
         self.setWindowTitle("YouTube Downloader")
         self.setGeometry(400, 100, 800, 550)
 
-        # Frameless window for custom title bar
+        # Frameless window for custom title bar with rounded corners
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.drag_position = None
 
         # Windows 7 Aero Blue Theme - Authentic Colors
@@ -91,6 +92,7 @@ class YouTubeDownloader(QWidget):
                 color: #ffffff;
                 font-family: "Segoe UI", Arial, sans-serif;
                 font-size: 11px;
+                border-radius: 8px;
             }
 
             QLabel {
@@ -310,9 +312,21 @@ class YouTubeDownloader(QWidget):
             QWidget#titleBar {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 #4a90d9, stop:0.5 #2d6fc4, stop:1 #245edc);
-                border-top-left-radius: 6px;
-                border-top-right-radius: 6px;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
                 min-height: 32px;
+            }
+
+            /* Content Area - matches title bar */
+            QWidget#contentArea {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #245edc, stop:1 #1a4a8a);
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
             }
 
             QLabel#titleLabel {
@@ -554,11 +568,12 @@ class YouTubeDownloader(QWidget):
 
         layout.addWidget(title_bar)
 
-        # Content area with padding
+        # Content area with padding - styled to match title bar
         content = QWidget()
+        content.setObjectName("contentArea")
         content_layout = QVBoxLayout(content)
-        content_layout.setContentsMargins(10, 10, 10, 10)
-        content_layout.setSpacing(8)
+        content_layout.setContentsMargins(12, 12, 12, 12)
+        content_layout.setSpacing(10)
 
         # ---------------- URL Input ----------------
         url_content_layout = QHBoxLayout()
@@ -570,46 +585,57 @@ class YouTubeDownloader(QWidget):
 
         paste_button = QPushButton("📋 Paste URL")
         paste_button.setObjectName("blueButton")
-        paste_button.setFixedWidth(90)
+        paste_button.setFixedWidth(100)
+        paste_button.setToolTip("Paste URL from clipboard")
         paste_button.clicked.connect(self._paste_clipboard)
         url_content_layout.addWidget(paste_button)
         content_layout.addLayout(url_content_layout)
 
         # ---------------- Output Folder ----------------
         folder_content_layout = QHBoxLayout()
-        folder_content_layout.setSpacing(5)
-        self.saved_folder_label = QLabel(f"Download to :-  {self.output_folder}")
+        folder_content_layout.setSpacing(8)
+        self.saved_folder_label = QLabel(f"📁 {self.output_folder}")
+        self.saved_folder_label.setToolTip("Current download location")
         folder_content_layout.addWidget(self.saved_folder_label)
 
-        self.output_folder_btn = QPushButton("📂 Save To")
+        self.output_folder_btn = QPushButton("📂 Change Folder")
         self.output_folder_btn.setObjectName("orangeButton")
-        self.output_folder_btn.setFixedWidth(140)
+        self.output_folder_btn.setFixedWidth(120)
+        self.output_folder_btn.setToolTip("Select download folder")
         self.output_folder_btn.clicked.connect(self.select_output_folder)
         folder_content_layout.addWidget(self.output_folder_btn)
         content_layout.addLayout(folder_content_layout)
 
         # ---------------- Format & Quality ----------------
-        self.format_quality_combo = QComboBox()  # Combined format + quality dropdown
-        self.format_quality_combo.addItem("Select Format")  # Placeholder
+        self.format_quality_combo = QComboBox()
+        self.format_quality_combo.addItem("🎬 Select Format")
+        self.format_quality_combo.setToolTip("Choose video quality and format")
         content_layout.addWidget(self.format_quality_combo)
 
         # Add a button to fetch formats/sizes
-        fetch_button = QPushButton("Fetch Formats")
+        fetch_button = QPushButton("🔍 Fetch Formats")
         fetch_button.setObjectName("blueButton")
+        fetch_button.setToolTip("Get available formats for the URL")
         fetch_button.clicked.connect(self.update_format_dropdown)
         content_layout.addWidget(fetch_button)
 
         # ---------------- Queue Buttons ----------------
         queue_content_layout = QHBoxLayout()
-        #    queue_content_layout.setSpacing(5)
-        self.enqueue_button = QPushButton("Add to Queue")
+        queue_content_layout.setSpacing(8)
+
+        self.enqueue_button = QPushButton("➕ Add to Queue")
         self.enqueue_button.setObjectName("greenButton")
+        self.enqueue_button.setToolTip("Add the URL to download queue")
         self.enqueue_button.clicked.connect(self.enqueue_download)
-        self.download_button = QPushButton("Start Queue Download")
+
+        self.download_button = QPushButton("▶ Start Download")
         self.download_button.setObjectName("greenButton")
+        self.download_button.setToolTip("Start downloading all queued videos")
         self.download_button.clicked.connect(self.start_queue)
-        self.cancel_button = QPushButton("Cancel Download")
+
+        self.cancel_button = QPushButton("⏹ Cancel")
         self.cancel_button.setObjectName("redButton")
+        self.cancel_button.setToolTip("Cancel the current download")
         self.cancel_button.setEnabled(False)
         self.cancel_button.clicked.connect(self.cancel_download)
 
@@ -620,31 +646,24 @@ class YouTubeDownloader(QWidget):
 
         # ---------------- Queue List ----------------
         self.queue_list = QListWidget()
-        self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.queue_list.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Expanding)
         content_layout.addWidget(self.queue_list)
 
         # ---------------- Progress Bar ---------------------
-        # progress_content_layout = QHBoxLayout()  # Isolated content_layout for progress bar
-        # progress_content_layout.setContentsMargins(0, 0, 0, 0)
-        # progress_content_layout.setSpacing(0)
-
         self.progress_bar = QProgressBar()
-        self.progress_bar.setTextVisible(False)
-        self.progress_bar.setMinimumHeight(25)
-        #    self.progress_bar.setMaximumWidth(16777215)
-        self.progress_bar.setStyleSheet("margin: 0px; padding: 0px;")
-        self.progress_bar.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        content_layout.addWidget(self.progress_bar)  # Add directly to main content_layout
-
-        #    progress_content_layout.addWidget(self.progress_bar)
-        #    content_layout.addLayout(progress_content_layout)  # Add the isolated content_layout
-        #    content_layout.addSpacing(5)
-        #    content_layout.addStretch(0)
+        self.progress_bar.setTextVisible(True)
+        self.progress_bar.setFormat("%p%")
+        self.progress_bar.setMinimumHeight(22)
+        self.progress_bar.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Fixed)
+        content_layout.addWidget(self.progress_bar)
 
         # ---------------- Status Label ----------------
-        self.status_label = QLabel("Status: Idle")
-        self.status_label.setContentsMargins(0, 0, 0, 0)
-        self.status_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.status_label = QLabel("⏸ Ready")
+        self.status_label.setContentsMargins(5, 5, 5, 5)
+        self.status_label.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Fixed)
         content_layout.addWidget(self.status_label, 0)
 
         layout.addWidget(content)
@@ -683,18 +702,21 @@ class YouTubeDownloader(QWidget):
         self.tray_icon = QSystemTrayIcon(self)
         style = self.style()
         if style:  # type: ignore[reportOptionalMemberAccess]
-            self.tray_icon.setIcon(style.standardIcon(QStyle.SP_ComputerIcon))  # type: ignore[attr-defined]
+            self.tray_icon.setIcon(style.standardIcon(
+                QStyle.SP_ComputerIcon))  # type: ignore[attr-defined]
 
         tray_menu = QMenu()
         restore_action = QAction("Restore", self)
         exit_action = QAction("Exit", self)
-        restore_action.triggered.connect(self.showNormal)  # type: ignore[arg-type]
+        restore_action.triggered.connect(
+            self.showNormal)  # type: ignore[arg-type]
         exit_action.triggered.connect(self.close)  # type: ignore[arg-type]
         tray_menu.addAction(restore_action)
         tray_menu.addAction(exit_action)
 
         self.tray_icon.setContextMenu(tray_menu)
-        self.tray_icon.activated.connect(self.toggle_visibility)  # type: ignore[arg-type]
+        self.tray_icon.activated.connect(
+            self.toggle_visibility)  # type: ignore[arg-type]
         self.tray_icon.show()
 
     def toggle_visibility(self, reason):
@@ -712,7 +734,7 @@ class YouTubeDownloader(QWidget):
         folder = QFileDialog.getExistingDirectory(self, "Select Output Folder")
         if folder:
             self.output_folder = folder
-            self.saved_folder_label.setText(f"Download to :-  {self.output_folder}")
+            self.saved_folder_label.setText(f"📁 {self.output_folder}")
 
     # ----------------------- Queue -----------------------
     def enqueue_download(self):
