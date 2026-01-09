@@ -30,18 +30,19 @@ class QueueItemWidget(QWidget):
         self.remove_btn.setCursor(Qt.PointingHandCursor)
         self.remove_btn.setStyleSheet("""
             QPushButton {
-                color: #FF0000;
-                background-color: transparent;
-                border: none;
+                color: white;
+                background-color: #CC0000;
+                border: 1px solid #AA0000;
+                border-radius: 4px;
                 font-weight: bold;
-                font-size: 16px;
-                padding: 0px;
+                font-size: 14px;
+                padding-bottom: 2px;
                 margin: 0px;
-                line-height: 16px;
+                line-height: 14px;
             }
             QPushButton:hover {
-                background-color: #FFE5E5;
-                border-radius: 8px;
+                background-color: #FF0000;
+                border: 1px solid #CC0000;
             }
         """)
         self.remove_btn.clicked.connect(
