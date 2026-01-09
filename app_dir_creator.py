@@ -1,4 +1,9 @@
-# app_dir_creator.py
+"""Application directory and environment setup utilities.
+
+This module provides functions to create and manage application directories,
+including download folders and database paths.
+"""
+
 
 import os
 import sys
