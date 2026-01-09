@@ -1,40 +1,47 @@
-import sys
+"""YouTube Downloader main window module.
+
+This module contains the YouTubeDownloader class which provides the main
+GUI interface for downloading YouTube videos using PyQt5.
+"""
 import os
 import re
+import sys
+
 import yt_dlp
+from loguru import logger
+# pylint: disable=no-name-in-module
+from PyQt5.QtCore import QSettings, Qt, QTimer  # type: ignore
+# pylint: disable=no-name-in-module
+from PyQt5.QtWidgets import (  # type: ignore
+    QAction,
+    QApplication,
+    QComboBox,
+    QFileDialog,
+    QHBoxLayout,
+    QLabel,
+    QListWidget,
+    QMenu,
+    QMessageBox,
+    QProgressBar,
+    QPushButton,
+    QSizePolicy,
+    QStyle,
+    QSystemTrayIcon,
+    QVBoxLayout,
+    QWidget,
+)
+
+from app_dir_creator import (
+    ensure_environment,
+    get_database_path,
+    get_download_folder,
+)
+from database_handler import record_history, setup_database
 
 # import subprocess
 from download_thread import DownloadThread
-from database_handler import setup_database, record_history
 from ffmpeg_utils import get_ffmpeg_path as find_ffmpeg
-from app_dir_creator import (
-    get_download_folder,
-    get_database_path,
-    ensure_environment,
-    download_ffmpeg,
-)
-
 from vSmart_Paste_url import UrlLineEdit
-from PyQt5.QtWidgets import (
-    QApplication,
-    QWidget,
-    QVBoxLayout,
-    QLabel,
-    QPushButton,
-    QProgressBar,
-    QFileDialog,
-    QMessageBox,
-    QHBoxLayout,
-    QListWidget,
-    QMenu,
-    QAction,
-    QStyle,
-    QSizePolicy,
-    QComboBox,
-    QSystemTrayIcon,
-)  # QLineEdit,
-from PyQt5.QtCore import QSettings, QTimer, Qt, QPoint  # QThread, pyqtSignal
-from loguru import logger
 
 logger.add("downloader.log", rotation="500 KB")
 
@@ -66,12 +73,21 @@ def validate_url(url: str) -> bool:
     Returns True if valid, False otherwise.
     """
     # Basic URL pattern for YouTube
-    youtube_pattern = r"^https?://(www\.)?(youtube\.com/(watch\?v=|shorts/|live/|embed/|v/)|youtu\.be/).+"
+    youtube_pattern = (
+        r"^https?://(www\.)?"
+        r"(youtube\.com/(watch\?v=|shorts/|live/|embed/|v/)|youtu\.be/).+"
+    )
     return bool(re.match(youtube_pattern, url, re.IGNORECASE))
 
 
 # ======================= Main App =======================
 class YouTubeDownloader(QWidget):
+    """Main application window for the YouTube Downloader.
+
+    Provides a PyQt5-based GUI with download queue management,
+    format selection, and system tray integration.
+    """
+
     def __init__(self):
         super().__init__()
         self.setWindowTitle("YouTube Downloader")
@@ -416,7 +432,7 @@ class YouTubeDownloader(QWidget):
         try:
             self.ffmpeg_path = find_ffmpeg()
             print(f"FFmpeg found at: {self.ffmpeg_path}")
-        except Exception as e:
+        except (OSError, FileNotFoundError, RuntimeError) as e:
             print(f"FFmpeg error: {e}")
             self.ffmpeg_path = None
             QMessageBox.warning(
@@ -428,6 +444,7 @@ class YouTubeDownloader(QWidget):
 
     # ------------------Shows Dropwnlist format - size------------
     def fetch_format_sizes(self, url):
+        """Fetch available format sizes for a given YouTube URL."""
         ydl_opts = {"quiet": True, "skip_download": True}
         formats_list = []
 
@@ -464,12 +481,13 @@ class YouTubeDownloader(QWidget):
                             "size_mb": size_mb,
                         }
                     )
-        except Exception as e:
+        except (yt_dlp.utils.DownloadError, KeyError, TypeError) as e:
             self.status_label.setText(f"Error fetching formats: {e}")
 
         return formats_list
 
     def update_format_dropdown(self):
+        """Update the format dropdown with sizes for the current URL."""
         url = self.url_input.text().strip()
         if not url:
             return
@@ -528,6 +546,7 @@ class YouTubeDownloader(QWidget):
 
     # ----------------------- GUI Setup -----------------------
     def init_ui(self):
+        """Initialize the user interface components."""
         # --------------Main vertical layout-----------------------
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -678,19 +697,19 @@ class YouTubeDownloader(QWidget):
             self.showMaximized()
             self.maximize_btn.setText("❐")
 
-    def mousePressEvent(self, event):
+    def mousePressEvent(self, event):  # pylint: disable=invalid-name
         """Handle mouse press for window dragging."""
         if event.button() == Qt.LeftButton and event.pos().y() < 35:
             self.drag_position = event.globalPos() - self.frameGeometry().topLeft()
             event.accept()
 
-    def mouseMoveEvent(self, event):
+    def mouseMoveEvent(self, event):  # pylint: disable=invalid-name
         """Handle mouse move for window dragging."""
         if event.buttons() == Qt.LeftButton and self.drag_position:
             self.move(event.globalPos() - self.drag_position)
             event.accept()
 
-    def mouseReleaseEvent(self, event):
+    def mouseReleaseEvent(self, _event):  # pylint: disable=invalid-name
         """Handle mouse release to stop dragging."""
         self.drag_position = None
 
@@ -699,6 +718,7 @@ class YouTubeDownloader(QWidget):
 
     # ----------------------- Tray -----------------------
     def init_tray(self):
+        """Initialize the system tray icon and menu."""
         self.tray_icon = QSystemTrayIcon(self)
         style = self.style()
         if style:  # type: ignore[reportOptionalMemberAccess]
@@ -720,10 +740,13 @@ class YouTubeDownloader(QWidget):
         self.tray_icon.show()
 
     def toggle_visibility(self, reason):
+        """Toggle window visibility based on tray icon activation."""
         if reason == QSystemTrayIcon.Trigger:  # type: ignore[attr-defined]
             self.setVisible(not self.isVisible())
 
-    def closeEvent(self, event):  # type: ignore[override]
+    # type: ignore[override]  # pylint: disable=invalid-name
+    def closeEvent(self, event):
+        """Handle window close event, saving settings."""
         self.settings.setValue("output_folder", self.output_folder)
         self.tray_icon.hide()
         if event:
@@ -731,6 +754,7 @@ class YouTubeDownloader(QWidget):
 
     # ----------------------- Folder Selection -----------------------
     def select_output_folder(self):
+        """Open a dialog to select the output folder."""
         folder = QFileDialog.getExistingDirectory(self, "Select Output Folder")
         if folder:
             self.output_folder = folder
@@ -738,6 +762,7 @@ class YouTubeDownloader(QWidget):
 
     # ----------------------- Queue -----------------------
     def enqueue_download(self):
+        """Add the current URL to the download queue."""
         url = self.url_input.text().strip()
         if not url:
             return
@@ -761,6 +786,7 @@ class YouTubeDownloader(QWidget):
         self.url_input.clear()
 
     def start_queue(self):
+        """Start downloading all items in the queue."""
         if not self.download_queue:
             QMessageBox.information(self, "Info", "No URLs in the queue.")
             return
@@ -804,7 +830,9 @@ class YouTubeDownloader(QWidget):
             "quiet": True,
             "noprogress": False,  # enables the progress hooks
             # <-- directory only
-            "ffmpeg_location": os.path.dirname(self.ffmpeg_path) if self.ffmpeg_path else None,
+            "ffmpeg_location": (
+                os.path.dirname(self.ffmpeg_path) if self.ffmpeg_path else None
+            ),
             "logger": logger,
             "continuedl": True,
             "retries": 10,
@@ -841,6 +869,7 @@ class YouTubeDownloader(QWidget):
         self.download_thread.start()
 
     def download_thread_hook(self, d):
+        """Hook for yt-dlp progress updates during download."""
         if d["status"] == "downloading":
             total = d.get("total_bytes") or d.get("total_bytes_estimate", 0)
             downloaded = d.get("downloaded_bytes", 0)
@@ -849,7 +878,8 @@ class YouTubeDownloader(QWidget):
                 if self.download_thread:
                     self.download_thread.progress.emit(progress)
 
-    def download_finished(self, success, message, url, title, path, status):
+    def download_finished(self, _success, message, url, title, path, status):
+        """Handle download completion and record to history."""
         self.downloading = False
         record_history(self.db_cursor, self.conn, url, title, path, status)
         self.progress_bar.setValue(0)
@@ -864,6 +894,7 @@ class YouTubeDownloader(QWidget):
         QTimer.singleShot(100, self.download_next)
 
     def cancel_download(self):
+        """Cancel the currently running download."""
         if self.download_thread and self.download_thread.isRunning():
             self.download_thread.cancel()
             self.status_label.setText("Status: Cancel requested...")

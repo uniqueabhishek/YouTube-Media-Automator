@@ -19,6 +19,8 @@ Author: Hi Tech Versions Team
 """
 
 import sys
+
+# type: ignore  # pylint: disable=no-name-in-module
 from PyQt5.QtWidgets import QApplication
 
 # Import the main YouTubeDownloader class from the renamed module

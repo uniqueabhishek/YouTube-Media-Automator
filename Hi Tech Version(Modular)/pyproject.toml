@@ -45,3 +45,8 @@ dev = [
 [tool.pylint.main]
 extension-pkg-allow-list = ["PyQt5"]
 
+[tool.pyright]
+typeCheckingMode = "basic"
+reportMissingImports = false
+extraPaths = ["."]
+
