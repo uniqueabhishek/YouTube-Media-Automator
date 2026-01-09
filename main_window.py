@@ -35,11 +35,11 @@ from PyQt5.QtWidgets import (  # type: ignore
 
 from app_dir_creator import get_database_path, get_download_folder
 from database_handler import DatabaseManager, init_db
-
-# import subprocess
 from download_thread import DownloadThread
 from ffmpeg_utils import get_ffmpeg_path as find_ffmpeg
+from queue_item import QueueItem, QueueStatus
 from smart_paste_utils import UrlLineEdit
+from title_fetch_thread import TitleFetchThread
 
 logger.add("downloader.log", rotation="500 KB")
 
@@ -391,9 +391,12 @@ class YouTubeDownloader(QWidget):
 
         # ---------------------------------------------------
 
-        self.download_queue = []
+        # Queue now stores QueueItem objects with metadata
+        self.download_queue: list[QueueItem] = []
         self.download_thread = None
         self.downloading = False
+        # Track background title fetch threads
+        self.title_fetch_threads: list[TitleFetchThread] = []
 
         self.settings = QSettings("YouTubeDownloader", "Settings")
         # self.output_folder = self.settings.value("output_folder", os.getcwd())
@@ -750,6 +753,40 @@ class YouTubeDownloader(QWidget):
             self.saved_folder_label.setText(f"📁 {self.output_folder}")
 
     # ----------------------- Queue -----------------------
+    def update_queue_display(self):
+        """Update the queue list widget to show current queue state."""
+        self.queue_list.clear()
+        for item in self.download_queue:
+            icon = item.get_status_icon()
+            text = item.get_display_text()
+            self.queue_list.addItem(f"{icon} {text}")
+
+    def fetch_video_title(self, queue_item: QueueItem):
+        """Fetch video title in background thread."""
+        thread = TitleFetchThread(queue_item.url)
+        thread.title_fetched.connect(self.on_title_fetched)
+        thread.fetch_failed.connect(self.on_title_fetch_failed)
+        thread.finished.connect(
+            lambda: self.title_fetch_threads.remove(thread))
+        self.title_fetch_threads.append(thread)
+        thread.start()
+
+    def on_title_fetched(self, url: str, title: str):
+        """Handle successful title fetch."""
+        for item in self.download_queue:
+            if item.url == url:
+                item.title = title
+                self.update_queue_display()
+                break
+
+    def on_title_fetch_failed(self, url: str, error: str):
+        """Handle failed title fetch."""
+        for item in self.download_queue:
+            if item.url == url:
+                item.title = url  # Fallback to showing URL
+                self.update_queue_display()
+                break
+
     def enqueue_download(self):
         """Add the current URL to the download queue."""
         url = self.url_input.text().strip()
@@ -770,8 +807,38 @@ class YouTubeDownloader(QWidget):
             )
             return
 
-        self.download_queue.append(url)
-        self.queue_list.addItem(url)
+        # Check for duplicates
+        if any(item.url == url for item in self.download_queue):
+            QMessageBox.warning(
+                self,
+                "Duplicate URL",
+                "This URL is already in the queue.",
+            )
+            return
+
+        # Get current format selection
+        selected_format = self.format_quality_combo.currentText()
+        if selected_format.startswith("🎬"):
+            selected_format = ""
+
+        # Create queue item
+        queue_item = QueueItem(
+            url=url,
+            title="Fetching title...",
+            format_selection=selected_format,
+            status=QueueStatus.WAITING
+        )
+
+        # Add to queue
+        self.download_queue.append(queue_item)
+
+        # Update display
+        self.update_queue_display()
+
+        # Fetch title in background
+        self.fetch_video_title(queue_item)
+
+        # Clear input
         self.url_input.clear()
 
     def start_queue(self):
@@ -791,10 +858,16 @@ class YouTubeDownloader(QWidget):
             self.downloading = False
             return
 
-        # Pop the next URL from the queue
-        url = self.download_queue.pop(0)
-        self.queue_list.takeItem(0)
-        self.status_label.setText(f"Status: Downloading {url}")
+        # Pop the next item from the queue
+        queue_item = self.download_queue.pop(0)
+        url = queue_item.url
+
+        # Update item status
+        queue_item.status = QueueStatus.DOWNLOADING
+        self.update_queue_display()
+
+        self.status_label.setText(
+            f"Status: Downloading {queue_item.title or url}")
         self.downloading = True
 
         # --- Use new combined dropdown ---
