@@ -2,8 +2,8 @@
 """
 Cleanup script for incomplete YouTube downloads
 """
-import os
 import glob
+import os
 
 
 def cleanup_incomplete_downloads(downloads_dir="downloads"):
@@ -36,7 +36,7 @@ def cleanup_incomplete_downloads(downloads_dir="downloads"):
                 os.remove(file_path)
                 cleaned_files.append(os.path.basename(file_path))
                 print(f"🗑️  Removed: {os.path.basename(file_path)}")
-            except Exception as e:
+            except Exception as e:  # pylint: disable=broad-exception-caught
                 print(f"❌ Failed to remove {file_path}: {e}")
 
     if cleaned_files:
@@ -46,7 +46,7 @@ def cleanup_incomplete_downloads(downloads_dir="downloads"):
 
     # Show remaining files
     complete_files = []
-    for root, dirs, files in os.walk(downloads_dir):
+    for _, _, files in os.walk(downloads_dir):
         for file in files:
             if file.endswith(('.mp4', '.mp3', '.mkv', '.webm')):
                 complete_files.append(file)
