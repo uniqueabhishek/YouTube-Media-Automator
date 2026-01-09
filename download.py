@@ -27,7 +27,8 @@ def get_url_info(url: str) -> Tuple[str, Dict]:
         url (str): YouTube URL to analyze
 
     Returns:
-        Tuple[str, Dict]: (content_type, info_dict) where content_type is 'video', 'playlist', or 'channel'
+        Tuple[str, Dict]: (content_type, info_dict) where content_type is 'video',
+            'playlist', or 'channel'
     """
     try:
         # Use yt-dlp to extract info without downloading
@@ -62,7 +63,8 @@ def get_url_info(url: str) -> Tuple[str, Dict]:
 
             # Handle channel detection
             if content_type == "playlist":
-                # Check if it's actually a channel (uploader_id indicates channel content)
+                # Check if it's actually a channel (uploader_id indicates channel
+                # content)
                 if info.get("uploader_id") and (
                     "/@" in url or "/channel/" in url or "/c/" in url or "/user/" in url
                 ):
@@ -72,7 +74,7 @@ def get_url_info(url: str) -> Tuple[str, Dict]:
 
             return content_type, info
 
-    except Exception:
+    except Exception:  # pylint: disable=broad-exception-caught
         # Simple fallback: check URL patterns
         parsed_url = urlparse(url)
         query_params = parse_qs(parsed_url.query)
@@ -117,7 +119,8 @@ def get_content_type(url: str) -> str:
 
 def parse_multiple_urls(input_string: str) -> List[str]:
     """
-    Parse multiple URLs from input string separated by commas, spaces, newlines, or mixed formats.
+    Parse multiple URLs from input string separated by commas, spaces, newlines,
+    or mixed formats.
     Handles complex mixed separators like "url1, url2 url3\nurl4".
 
     Args:
@@ -150,7 +153,8 @@ def parse_multiple_urls(input_string: str) -> List[str]:
 
     if invalid_count > 0:
         print(
-            f"💡 Found {len(valid_urls)} valid YouTube URLs, skipped {invalid_count} invalid entries"
+            f"💡 Found {len(valid_urls)} valid YouTube URLs, "
+            f"skipped {invalid_count} invalid entries"
         )
 
     return valid_urls
@@ -254,20 +258,23 @@ def download_single_video(
             f"%(playlist_index)s-%(title)s.{file_extension}",
         )
         print(
-            f"📋 [Thread {thread_id}] Detected playlist URL. Downloading entire playlist..."
+            f"📋 [Thread {thread_id}] Detected playlist URL. "
+            "Downloading entire playlist..."
         )
     elif content_type == "channel":
         ydl_opts["outtmpl"] = os.path.join(
             output_path, "%(uploader)s", f"%(upload_date)s-%(title)s.{file_extension}"
         )
         print(
-            f"📺 [Thread {thread_id}] Detected channel URL. Downloading entire channel..."
+            f"📺 [Thread {thread_id}] Detected channel URL. "
+            "Downloading entire channel..."
         )
     else:  # single video
         ydl_opts["outtmpl"] = os.path.join(
             output_path, f"%(title)s.{file_extension}")
         print(
-            f"🎥 [Thread {thread_id}] Detected single video URL. Downloading {'audio' if audio_only else 'video'}..."
+            f"🎥 [Thread {thread_id}] Detected single video URL. "
+            f"Downloading {'audio' if audio_only else 'video'}..."
         )
 
     try:
@@ -290,7 +297,8 @@ def download_single_video(
                 title = info.get("title", "Unknown Playlist")
                 video_count = len(info.get("entries", []))
                 print(
-                    f"📋 [Thread {thread_id}] {content_type.title()}: '{title}' ({video_count} videos)"
+                    f"📋 [Thread {thread_id}] {content_type.title()}: "
+                    f"'{title}' ({video_count} videos)"
                 )
 
                 # Ensure we have entries to download
@@ -298,7 +306,10 @@ def download_single_video(
                     return {
                         "url": url,
                         "success": False,
-                        "message": f"❌ [Thread {thread_id}] {content_type.title()} appears to be empty or private",
+                        "message": (
+                            f"❌ [Thread {thread_id}] {content_type.title()} "
+                            "appears to be empty or private"
+                        ),
                     }
 
             # Download content
@@ -312,7 +323,8 @@ def download_single_video(
                     "success": True,
                     "message": (
                         f"✅ [Thread {thread_id}] {content_type.title()} '{title}' "
-                        f"download completed! ({video_count} {'MP3s' if audio_only else 'videos'})"
+                        f"download completed! ({video_count} "
+                        f"{'MP3s' if audio_only else 'videos'})"
                     ),
                 }
             else:
