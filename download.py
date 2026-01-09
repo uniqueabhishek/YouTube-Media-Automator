@@ -172,7 +172,7 @@ def get_available_formats(url: str) -> None:
     try:
         with YoutubeDL(ydl_opts) as ydl:
             ydl.extract_info(url, download=False)
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-exception-caught
         print(f"Error listing formats: {str(e)}")
 
 
