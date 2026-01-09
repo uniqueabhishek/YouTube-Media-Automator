@@ -1,6 +1,6 @@
 """Custom queue item widget with clickable remove button."""
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QPushButton, QWidget
+from PyQt5.QtWidgets import QHBoxLayout, QLabel, QPushButton, QWidget, QSizePolicy  # type: ignore
 
 
 class QueueItemWidget(QWidget):
@@ -22,32 +22,31 @@ class QueueItemWidget(QWidget):
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(2, 2, 2, 2)
-        layout.setSpacing(2)
+        layout.setSpacing(5)
 
         # Remove button (×)
         self.remove_btn = QPushButton("×")
         self.remove_btn.setFixedSize(16, 16)
+        self.remove_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         self.remove_btn.setCursor(Qt.PointingHandCursor)
         self.remove_btn.setStyleSheet("""
             QPushButton {
                 color: white;
                 background-color: #CC0000;
-                border: 1px solid #AA0000;
+                border: none;
                 border-radius: 4px;
                 font-weight: bold;
                 font-size: 14px;
-                padding-bottom: 2px;
+                padding: 0px;
                 margin: 0px;
-                line-height: 14px;
             }
             QPushButton:hover {
                 background-color: #FF0000;
-                border: 1px solid #CC0000;
             }
         """)
         self.remove_btn.clicked.connect(
             lambda: self.remove_clicked.emit(self.row))
-        layout.addWidget(self.remove_btn)
+        layout.addWidget(self.remove_btn, 0, Qt.AlignVCenter)
 
         # Text label
         self.text_label = QLabel(text)
