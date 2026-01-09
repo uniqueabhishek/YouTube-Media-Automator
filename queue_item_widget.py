@@ -22,11 +22,11 @@ class QueueItemWidget(QWidget):
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(2, 2, 2, 2)
-        layout.setSpacing(5)
+        layout.setSpacing(2)
 
         # Remove button (❌)
         self.remove_btn = QPushButton("❌")
-        self.remove_btn.setFixedSize(16, 16)
+        self.remove_btn.setFixedSize(12, 16)
         self.remove_btn.setStyleSheet("""
             QPushButton {
                 background-color: transparent;
