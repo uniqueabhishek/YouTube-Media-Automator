@@ -45,7 +45,8 @@ class QueueManager(QObject):
 
             # Create list item
             list_item = QListWidgetItem(self.queue_list)
-            list_item.setSizeHint(QSize(0, 30))  # Set height for the widget
+            # Set height for the widget to fit 2 lines
+            list_item.setSizeHint(QSize(0, 50))
 
             # Create custom widget
             widget = QueueItemWidget(index, display_text)
