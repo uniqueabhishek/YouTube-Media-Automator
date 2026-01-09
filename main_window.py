@@ -39,6 +39,7 @@ from download_thread import DownloadThread
 from ffmpeg_utils import get_ffmpeg_path as find_ffmpeg
 from queue_item import QueueItem, QueueStatus
 from queue_manager import QueueManager
+from smart_paste_utils import UrlLineEdit
 
 logger.add("downloader.log", rotation="500 KB")
 
