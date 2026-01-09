@@ -752,6 +752,23 @@ class YouTubeDownloader(QWidget):
     def select_output_folder(self):
         """Open a dialog to select the output folder."""
         folder = QFileDialog.getExistingDirectory(self, "Select Output Folder")
+        if folder:
+            self.output_folder = folder
+            self.saved_folder_label.setText(f"📁 {self.output_folder}")
+
+    # ----------------------- Queue -----------------------
+    def update_queue_display(self):
+        """Update the queue list widget to show current queue state."""
+        self.queue_list.clear()
+        for index, item in enumerate(self.download_queue, start=1):
+            icon = item.get_status_icon()
+            text = item.get_display_text()
+            self.queue_list.addItem(f"#{index} {icon} {text}")
+
+    def fetch_video_title(self, queue_item: QueueItem):
+        """Fetch video title in background thread."""
+        thread = TitleFetchThread(queue_item.url)
+        thread.title_fetched.connect(self.on_title_fetched)
         thread.fetch_failed.connect(self.on_title_fetch_failed)
         thread.finished.connect(
             lambda: self.title_fetch_threads.remove(thread))
@@ -760,11 +777,11 @@ class YouTubeDownloader(QWidget):
 
     def on_title_fetched(self, url: str, title: str):
         """Handle successful title fetch."""
-        for index, item in enumerate(self.download_queue, start=1):
-            icon = item.get_status_icon()
-            text = item.get_display_text()
-            self.queue_list.addItem(f"#{index} {icon} {text}")
-            break
+        for item in self.download_queue:
+            if item.url == url:
+                item.title = title
+                self.update_queue_display()
+                break
 
     def on_title_fetch_failed(self, url: str, error: str):
         """Handle failed title fetch."""
