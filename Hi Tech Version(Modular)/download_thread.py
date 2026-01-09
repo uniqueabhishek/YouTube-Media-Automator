@@ -1,17 +1,31 @@
+"""Module for handling background video downloads using QThread.
+
+This module provides a threaded downloader class that wraps yt-dlp
+to perform downloads without freezing the main GUI.
+"""
 import time
 
 import yt_dlp
 from loguru import logger
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal  # pylint: disable=no-name-in-module
 
 
 class DownloadThread(QThread):
+    """Background thread for downloading YouTube videos using yt-dlp."""
+
     progress = pyqtSignal(int)  # emits 0-100
     status = pyqtSignal(str)  # emits status messages
     finished = pyqtSignal(bool, str, str, str, str, str)
     # success, message, url, title, path, status
 
     def __init__(self, url, ydl_opts):
+        """Initialize the download thread.
+
+        Args:
+            url (str): The URL of the video to download.
+            ydl_opts (dict): yt-dlp configuration options.
+        """
+
         super().__init__()
         self.url = url
         self.ydl_opts = dict(ydl_opts)  # copy to avoid shared mutations
@@ -19,10 +33,12 @@ class DownloadThread(QThread):
         self._paused = False
 
     def run(self):
+        """Execute the download process."""
         def hook(d):
             try:
                 if self._cancelled:
-                    raise yt_dlp.utils.DownloadCancelled()  # type: ignore[attr-defined]
+                    # type: ignore[attr-defined]
+                    raise yt_dlp.utils.DownloadCancelled()
                 # Get total and downloaded bytes
                 total = (
                     d.get("total_bytes")
@@ -60,7 +76,7 @@ class DownloadThread(QThread):
                 )
                 self.status.emit(status_msg)
 
-            except Exception as e:
+            except Exception as e:  # pylint: disable=broad-exception-caught
                 self.status.emit(f"Hook error: {e}")
 
         self.ydl_opts["progress_hooks"] = [hook]
@@ -69,7 +85,8 @@ class DownloadThread(QThread):
         attempt = 0
         while attempt < max_retries:
             try:
-                with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:  # type: ignore[arg-type]
+                # type: ignore[arg-type]
+                with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
                     info = ydl.extract_info(self.url, download=True)
                     if info is None:
                         self.finished.emit(
@@ -96,9 +113,10 @@ class DownloadThread(QThread):
                 )
                 return
 
-            except Exception as e:
+            except Exception as e:  # pylint: disable=broad-exception-caught
                 attempt += 1
-                logger.error(f"Download attempt {attempt} failed for {self.url}: {e}")
+                logger.error(
+                    f"Download attempt {attempt} failed for {self.url}: {e}")
                 if attempt >= max_retries:
                     self.finished.emit(
                         False,
@@ -112,5 +130,6 @@ class DownloadThread(QThread):
                 time.sleep(3)
 
     def cancel(self):
+        """Request the download to be cancelled."""
         self._cancelled = True
         self.status.emit("Cancelled")
