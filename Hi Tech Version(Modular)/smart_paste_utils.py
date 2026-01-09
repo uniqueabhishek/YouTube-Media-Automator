@@ -1,18 +1,35 @@
-from PyQt5.QtWidgets import QLineEdit, QApplication, QMessageBox, QWidget
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QKeyEvent
+"""Module for handling smart URL pasting functionality in PyQt5 widgets.
+
+This module provides mixins and custom widgets to validate and paste YouTube URLs
+from the clipboard automatically.
+"""
+# pylint: disable=no-name-in-module
 import yt_dlp
+from PyQt5.QtCore import Qt  # type: ignore
+from PyQt5.QtGui import QKeyEvent  # type: ignore
+from PyQt5.QtWidgets import (  # type: ignore
+    QApplication,
+    QLineEdit,
+    QMessageBox,
+    QWidget,
+)
 
 
 class SmartPasteMixin:
-    def keyPressEvent(self, a0: QKeyEvent):  # type: ignore[override]
-        if (a0.modifiers() & Qt.ControlModifier) != 0 and a0.key() == Qt.Key_V:  # type: ignore[attr-defined]
+    """Mixin to intercept Ctrl+V and validate YouTube URLs."""
+
+    # type: ignore[override]  # pylint: disable=invalid-name
+    def keyPressEvent(self, a0: QKeyEvent):
+        """Intercept Ctrl+V to validate YouTube URLs."""
+        # type: ignore[attr-defined]
+        if (a0.modifiers() & Qt.ControlModifier) != 0 and a0.key() == Qt.Key_V:
             clipboard = QApplication.clipboard()
             if clipboard:
                 text = clipboard.text()
                 if not text.startswith("http"):
                     QMessageBox.warning(
-                        self._get_parent_widget(),  # type: ignore[attr-defined]
+                        # type: ignore[attr-defined]
+                        self._get_parent_widget(),
                         "Invalid Paste",
                         "Please paste a valid URL starting with http or https.",
                     )
@@ -20,6 +37,7 @@ class SmartPasteMixin:
         super().keyPressEvent(a0)  # type: ignore[misc]
 
     def _get_parent_widget(self):  # type: ignore[return]
+        """Retrieve the closest QWidget parent."""
         p = self.parent()  # type: ignore[attr-defined]
         while p is not None and not isinstance(p, QWidget):
             p = p.parent()
@@ -27,18 +45,22 @@ class SmartPasteMixin:
 
 
 class UrlLineEdit(QLineEdit):
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    """Custom QLineEdit that performs smart paste validation for YouTube URLs."""
+    # Removed redundant __init__
 
-    def keyPressEvent(self, a0: QKeyEvent) -> None:
+    def keyPressEvent(self, a0: QKeyEvent) -> None:  # pylint: disable=invalid-name
+        """Handle key press events to intercept paste shortcuts."""
         # Override Ctrl+V to trigger smart paste instead of normal paste
-        if (a0.modifiers() & Qt.ControlModifier) != 0 and a0.key() == Qt.Key_V:  # type: ignore[attr-defined]
+        # type: ignore[attr-defined]
+        if (a0.modifiers() & Qt.ControlModifier) != 0 and a0.key() == Qt.Key_V:
             self.smart_paste()
             return  # Skip default handling
         super().keyPressEvent(a0)
 
     def smart_paste(self):
-        """Check clipboard for a valid URL and insert it if valid. Otherwise show a warning."""
+        """Check clipboard for a valid URL and insert it if valid.
+        Otherwise show a warning.
+        """
         clipboard = QApplication.clipboard()
         if not clipboard:
             return
@@ -60,12 +82,12 @@ class UrlLineEdit(QLineEdit):
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:  # type: ignore[arg-type]
                 ydl.extract_info(text, download=False)
             return True
-        except yt_dlp.utils.DownloadError:  # type: ignore[attr-defined]
-            return False
-        except Exception:
+        # type: ignore[attr-defined]
+        except (yt_dlp.utils.DownloadError, Exception):  # pylint: disable=broad-exception-caught
             return False
 
     def _get_parent_widget(self) -> QWidget | None:
+        """Retrieve the closest QWidget parent."""
         parent = self.parent()
         if isinstance(parent, QWidget):
             return parent

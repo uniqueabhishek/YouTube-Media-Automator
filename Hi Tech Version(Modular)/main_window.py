@@ -9,8 +9,10 @@ import sys
 
 import yt_dlp
 from loguru import logger
+
 # pylint: disable=no-name-in-module
 from PyQt5.QtCore import QSettings, Qt, QTimer  # type: ignore
+
 # pylint: disable=no-name-in-module
 from PyQt5.QtWidgets import (  # type: ignore
     QAction,
@@ -41,7 +43,7 @@ from database_handler import record_history, setup_database
 # import subprocess
 from download_thread import DownloadThread
 from ffmpeg_utils import get_ffmpeg_path as find_ffmpeg
-from vSmart_Paste_url import UrlLineEdit
+from smart_paste_utils import UrlLineEdit
 
 logger.add("downloader.log", rotation="500 KB")
 
@@ -626,17 +628,25 @@ class YouTubeDownloader(QWidget):
         content_layout.addLayout(folder_content_layout)
 
         # ---------------- Format & Quality ----------------
+        format_layout = QHBoxLayout()
+        format_layout.setSpacing(8)
+
         self.format_quality_combo = QComboBox()
         self.format_quality_combo.addItem("🎬 Select Format")
         self.format_quality_combo.setToolTip("Choose video quality and format")
-        content_layout.addWidget(self.format_quality_combo)
+        self.format_quality_combo.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Fixed)
+        format_layout.addWidget(self.format_quality_combo)
 
         # Add a button to fetch formats/sizes
         fetch_button = QPushButton("🔍 Fetch Formats")
         fetch_button.setObjectName("blueButton")
         fetch_button.setToolTip("Get available formats for the URL")
+        fetch_button.setFixedWidth(120)
         fetch_button.clicked.connect(self.update_format_dropdown)
-        content_layout.addWidget(fetch_button)
+        format_layout.addWidget(fetch_button)
+
+        content_layout.addLayout(format_layout)
 
         # ---------------- Queue Buttons ----------------
         queue_content_layout = QHBoxLayout()

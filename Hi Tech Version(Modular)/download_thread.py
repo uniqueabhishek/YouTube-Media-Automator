@@ -1,7 +1,8 @@
 import time
-from PyQt5.QtCore import QThread, pyqtSignal
+
 import yt_dlp
 from loguru import logger
+from PyQt5.QtCore import QThread, pyqtSignal
 
 
 class DownloadThread(QThread):

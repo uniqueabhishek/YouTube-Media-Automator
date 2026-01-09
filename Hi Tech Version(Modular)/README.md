@@ -55,7 +55,7 @@ Hi Tech Versions/
 ├── main_window.py                  # Main application code
 ├── download_thread.py              # Threaded download manager
 ├── database_handler.py             # SQLite database operations
-├── vSmart_Paste_url.py            # Smart URL validation widget
+├── smart_paste_utils.py           # Smart URL validation widget
 ├── app_dir_creator.py             # Environment setup
 ├── ffmpeg_utils.py                # FFmpeg path resolution
 ├── ffmpeg_updater.py              # FFmpeg update utility
@@ -128,7 +128,7 @@ Hi Tech Versions/
 - **main_window.py**: Main GUI and business logic
 - **download_thread.py**: QThread-based async downloads
 - **database_handler.py**: SQLite CRUD operations
-- **vSmart_Paste_url.py**: Custom QLineEdit with validation
+- **smart_paste_utils.py**: Custom QLineEdit with validation
 - **app_dir_creator.py**: Cross-platform path management
 - **ffmpeg_utils.py**: FFmpeg binary detection/download
 - **ffmpeg_updater.py**: FFmpeg version management
