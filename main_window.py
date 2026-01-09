@@ -579,6 +579,8 @@ class YouTubeDownloader(QWidget):
         content_layout.setContentsMargins(10, 10, 10, 10)
         self.url_input = UrlLineEdit(self)
         self.url_input.setPlaceholderText("Enter YouTube URL Here")
+        # Auto-fetch formats when URL is pasted
+        self.url_input.url_pasted.connect(self.update_format_dropdown)
         url_content_layout.addWidget(self.url_input)
 
         paste_button = QPushButton("📋 Paste URL")

@@ -7,7 +7,7 @@ from the clipboard automatically.
 import re
 from typing import Optional
 
-from PyQt5.QtCore import Qt  # type: ignore
+from PyQt5.QtCore import Qt, pyqtSignal  # type: ignore
 from PyQt5.QtGui import QKeyEvent  # type: ignore
 from PyQt5.QtWidgets import (  # type: ignore
     QApplication,
@@ -19,6 +19,9 @@ from PyQt5.QtWidgets import (  # type: ignore
 
 class UrlLineEdit(QLineEdit):
     """Custom QLineEdit that performs smart paste validation for YouTube URLs."""
+
+    # Signal emitted when a valid URL is pasted
+    url_pasted = pyqtSignal()
 
     def keyPressEvent(self, a0: QKeyEvent) -> None:  # pylint: disable=invalid-name
         """Handle key press events to intercept paste shortcuts."""
@@ -40,6 +43,8 @@ class UrlLineEdit(QLineEdit):
 
         if text and self._is_valid_url(text):
             self.setText(text)
+            # Emit signal to trigger auto-fetch of formats
+            self.url_pasted.emit()
         else:
             QMessageBox.warning(
                 self._get_parent_widget(),
