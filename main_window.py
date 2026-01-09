@@ -790,6 +790,81 @@ class YouTubeDownloader(QWidget):
                 item.title = url  # Fallback to showing URL
                 self.update_queue_display()
                 break
+    def show_queue_context_menu(self, position):
+        """Show context menu for queue list."""
+        if not self.queue_list.itemAt(position):
+            return
+
+        menu = QMenu()
+        current_row = self.queue_list.currentRow()
+
+        # Remove action
+        remove_action = QAction("🗑️ Remove from Queue", self)
+        remove_action.triggered.connect(self.remove_selected_from_queue)
+        menu.addAction(remove_action)
+
+        menu.addSeparator()
+
+        # Move up/down actions
+        move_up_action = QAction("⬆️ Move Up", self)
+        move_up_action.triggered.connect(self.move_queue_item_up)
+        move_up_action.setEnabled(current_row > 0)
+        menu.addAction(move_up_action)
+
+        move_down_action = QAction("⬇️ Move Down", self)
+        move_down_action.triggered.connect(self.move_queue_item_down)
+        move_down_action.setEnabled(current_row < len(self.download_queue) - 1)
+        menu.addAction(move_down_action)
+
+        menu.addSeparator()
+
+        # Clear all action
+        clear_action = QAction("🗑️ Clear All", self)
+        clear_action.triggered.connect(self.clear_queue)
+        menu.addAction(clear_action)
+
+        menu.exec_(self.queue_list.mapToGlobal(position))
+
+    def remove_selected_from_queue(self):
+        """Remove the selected item from queue."""
+        current_row = self.queue_list.currentRow()
+        if 0 <= current_row < len(self.download_queue):
+            self.download_queue.pop(current_row)
+            self.update_queue_display()
+
+    def move_queue_item_up(self):
+        """Move selected queue item up."""
+        current_row = self.queue_list.currentRow()
+        if current_row > 0:
+            self.download_queue[current_row], self.download_queue[current_row - 1] = \
+                self.download_queue[current_row - 1], self.download_queue[current_row]
+            self.update_queue_display()
+            self.queue_list.setCurrentRow(current_row - 1)
+
+    def move_queue_item_down(self):
+        """Move selected queue item down."""
+        current_row = self.queue_list.currentRow()
+        if current_row < len(self.download_queue) - 1:
+            self.download_queue[current_row], self.download_queue[current_row + 1] = \
+                self.download_queue[current_row + 1], self.download_queue[current_row]
+            self.update_queue_display()
+            self.queue_list.setCurrentRow(current_row + 1)
+
+    def clear_queue(self):
+        """Clear all items from queue."""
+        if self.download_queue:
+            reply = QMessageBox.question(
+                self,
+                "Clear Queue",
+                "Are you sure you want to clear all items from the queue?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            if reply == QMessageBox.Yes:
+                self.download_queue.clear()
+                self.update_queue_display()
+
+
 
     def enqueue_download(self):
         """Add the current URL to the download queue."""
@@ -997,3 +1072,4 @@ if __name__ == "__main__":
     window = YouTubeDownloader()
     window.show()
     sys.exit(app.exec_())
+
