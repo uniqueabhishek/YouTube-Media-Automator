@@ -386,8 +386,8 @@ class YouTubeDownloader(QWidget):
         self.db_path = get_database_path()
         init_db(self.db_path)
 
-        # FFmpeg is bundled via static-ffmpeg package
-        self.ffmpeg_path = find_ffmpeg()
+        # FFmpeg will be loaded lazily on first download (for faster startup)
+        self.ffmpeg_path = None
 
         # ---------------------------------------------------
 
@@ -802,7 +802,10 @@ class YouTubeDownloader(QWidget):
 
         codes = self.format_map.get(selected_item)
 
-        self.ffmpeg_path = find_ffmpeg()  # Get FFmpeg path
+        # Lazy-load FFmpeg on first download (speeds up app startup)
+        if not self.ffmpeg_path:
+            self.ffmpeg_path = find_ffmpeg()
+
         if not self.ffmpeg_path:
             QMessageBox.warning(
                 self,

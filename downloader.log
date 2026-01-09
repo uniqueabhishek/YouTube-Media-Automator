@@ -226,3 +226,13 @@
 2026-01-10 00:07:51.918 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] APkBClOJSoY: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
 2026-01-10 00:07:52.093 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] APkBClOJSoY: Downloading 1 format(s): 398+251-1
 2026-01-10 00:07:52.118 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [download] D:\D Desktop\Venezuela_Crisis_How_USA_Attack_on_Venezuela_How_USA_kidnapped_Nicolas_Maduro_Delta_Force.webm has already been downloaded
+2026-01-10 00:14:19.091 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=APkBClOJSoY
+2026-01-10 00:14:19.091 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] APkBClOJSoY: Downloading webpage
+2026-01-10 00:14:19.894 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-01-10 00:14:19.898 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] APkBClOJSoY: Downloading android sdkless player API JSON
+2026-01-10 00:14:20.027 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] APkBClOJSoY: Downloading web safari player API JSON
+2026-01-10 00:14:20.253 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] APkBClOJSoY: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-01-10 00:14:20.258 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] APkBClOJSoY: Downloading m3u8 information
+2026-01-10 00:14:20.695 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] APkBClOJSoY: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-01-10 00:14:20.843 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] APkBClOJSoY: Downloading 1 format(s): 398+251-1
+2026-01-10 00:14:20.867 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [download] D:\D Desktop\Venezuela_Crisis_How_USA_Attack_on_Venezuela_How_USA_kidnapped_Nicolas_Maduro_Delta_Force.webm has already been downloaded
