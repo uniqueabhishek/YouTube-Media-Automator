@@ -658,6 +658,16 @@ class YouTubeDownloader(QWidget):
         self.queue_list.setSizePolicy(
             QSizePolicy.Expanding, QSizePolicy.Expanding)
 
+        # Fix selection colors so text is visible when selected
+        self.queue_list.setStyleSheet("""
+            QListWidget::item:selected {
+                background-color: #0078D7;
+                color: white;
+            }
+            QListWidget::item:hover {
+                background-color: #E5F3FF;
+            }
+        """)
         # Initialize queue manager
         self.queue_manager = QueueManager(self.queue_list, self)
 
