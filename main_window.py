@@ -783,7 +783,7 @@ class YouTubeDownloader(QWidget):
                 self.update_queue_display()
                 break
 
-    def on_title_fetch_failed(self, url: str, error: str):
+    def on_title_fetch_failed(self, url: str, _error: str):
         """Handle failed title fetch."""
         for item in self.download_queue:
             if item.url == url:
