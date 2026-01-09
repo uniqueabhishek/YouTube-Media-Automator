@@ -1,6 +1,6 @@
 """Custom queue item widget with clickable remove button."""
-from PyQt5.QtCore import pyqtSignal  # type: ignore
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QPushButton, QWidget  # type: ignore
+from PyQt5.QtCore import Qt, pyqtSignal
+from PyQt5.QtWidgets import QHBoxLayout, QLabel, QPushButton, QWidget
 
 
 class QueueItemWidget(QWidget):
@@ -42,11 +42,6 @@ class QueueItemWidget(QWidget):
             QPushButton:hover {
                 background-color: #FFE5E5;
                 border-radius: 8px;
-            }
-        """)
-            QPushButton: hover {
-                background-color:  # FFE5E5;
-                border-radius: 2px;
             }
         """)
         self.remove_btn.clicked.connect(
