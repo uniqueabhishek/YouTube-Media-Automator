@@ -99,12 +99,7 @@ class YouTubeDownloader(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.drag_position = None
 
-        # Windows 7 Aero Blue Theme - Authentic Colors
-        # Main Windows 7 Blue: #00a2ed (Microsoft Blue)
-        # Window Background: #245edc (Classic Windows Blue)
-        # Windows 7 Aero Blue Theme - Authentic Colors
-        # Main Windows 7 Blue: #00a2ed (Microsoft Blue)
-        # Window Background: #245edc (Classic Windows Blue)
+        # Apply Windows 7 Aero Blue Theme
         self.setStyleSheet(MAIN_STYLESHEET)
 
         # Initialize app environment
@@ -327,7 +322,7 @@ class YouTubeDownloader(QWidget):
 
         self.output_folder_btn = QPushButton("📂 Change Folder")
         self.output_folder_btn.setObjectName("orangeButton")
-        self.output_folder_btn.setFixedWidth(120)
+        self.output_folder_btn.setFixedWidth(140)
         self.output_folder_btn.setToolTip("Select download folder")
         self.output_folder_btn.clicked.connect(self.select_output_folder)
         folder_content_layout.addWidget(self.output_folder_btn)
@@ -343,14 +338,6 @@ class YouTubeDownloader(QWidget):
         self.format_quality_combo.setSizePolicy(
             QSizePolicy.Expanding, QSizePolicy.Fixed)
         format_layout.addWidget(self.format_quality_combo)
-
-        # Add a button to fetch formats/sizes
-        fetch_button = QPushButton("🔍 Fetch Formats")
-        fetch_button.setObjectName("blueButton")
-        fetch_button.setToolTip("Get available formats for the URL")
-        fetch_button.setFixedWidth(120)
-        fetch_button.clicked.connect(self.update_format_dropdown)
-        format_layout.addWidget(fetch_button)
 
         content_layout.addLayout(format_layout)
 

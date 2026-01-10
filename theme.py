@@ -92,16 +92,6 @@ QComboBox:hover {
     border: 1px solid #00a2ed;
 }
 
-QComboBox::drop-down {
-    border: none;
-    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-        stop:0 #f0f0f0, stop:1 #d8d8d8);
-    width: 20px;
-    border-left: 1px solid #c0c0c0;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
 QComboBox QAbstractItemView {
     background-color: #ffffff;
     color: #000000;
