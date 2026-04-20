@@ -560,3 +560,39 @@
 2026-04-20 11:10:41.948 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
 2026-04-20 11:10:41.995 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
 2026-04-20 11:10:41.996 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:22:32.806 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:22:32.806 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:22:33.963 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] unable to extract [0;94myt initial data[0m; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U
+2026-04-20 11:22:33.964 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] Incomplete data received in embedded initial data; re-fetching using API.
+2026-04-20 11:22:33.965 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading initial data API JSON
+2026-04-20 11:22:34.966 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:22:35.177 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:22:35.700 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:22:35.826 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:22:36.109 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:22:36.177 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:22:36.178 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:22:39.230 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:22:39.230 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:22:40.390 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] unable to extract [0;94myt initial data[0m; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U
+2026-04-20 11:22:40.390 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] Incomplete data received in embedded initial data; re-fetching using API.
+2026-04-20 11:22:40.391 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading initial data API JSON
+2026-04-20 11:22:41.568 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:22:41.775 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:22:42.128 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:22:42.282 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:22:54.680 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:22:54.730 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:22:54.731 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:22:57.781 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:22:57.782 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:22:59.040 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] unable to extract [0;94myt initial data[0m; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U
+2026-04-20 11:22:59.040 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] Incomplete data received in embedded initial data; re-fetching using API.
+2026-04-20 11:22:59.041 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading initial data API JSON
+2026-04-20 11:23:00.093 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:23:00.382 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:23:00.722 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:23:00.911 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:23:01.189 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:23:01.232 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:23:01.233 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
