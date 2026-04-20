@@ -32,11 +32,31 @@ ENV/
 env.bak/
 venv.bak/
 
-# IDES
+# IDEs
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Linting & Type Checking
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# OS-specific
+Thumbs.db
+.DS_Store
 
 # Project Specific
 *.db
 *.log
+git_info.txt
 My YT Downloads/
