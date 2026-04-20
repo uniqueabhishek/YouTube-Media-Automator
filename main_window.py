@@ -9,16 +9,14 @@ import sys
 
 import yt_dlp
 from loguru import logger
-
-# pylint: disable=no-name-in-module
-from PyQt5.QtCore import QSettings, Qt, QTimer  # type: ignore
-
-# pylint: disable=no-name-in-module
-from PyQt5.QtWidgets import (  # type: ignore
+from PyQt5.QtCore import QSettings, Qt, QTimer  # pylint: disable=no-name-in-module
+from PyQt5.QtGui import QColor  # pylint: disable=no-name-in-module
+from PyQt5.QtWidgets import (  # pylint: disable=no-name-in-module
     QAction,
     QApplication,
     QComboBox,
     QFileDialog,
+    QGraphicsDropShadowEffect,
     QHBoxLayout,
     QLabel,
     QListWidget,
@@ -31,9 +29,7 @@ from PyQt5.QtWidgets import (  # type: ignore
     QSystemTrayIcon,
     QVBoxLayout,
     QWidget,
-    QGraphicsDropShadowEffect,
 )
-from PyQt5.QtGui import QColor
 
 from app_dir_creator import get_database_path, get_download_folder
 from database_handler import DatabaseManager, init_db
@@ -146,7 +142,14 @@ class YouTubeDownloader(QWidget):
 
     def fetch_format_sizes(self, url):
         """Fetch available format sizes for a given YouTube URL."""
-        ydl_opts = {"quiet": True, "skip_download": True}
+        ydl_opts = {
+            "quiet": True,
+            "skip_download": True,
+            "js_runtimes": {"node": {}},
+            "extractor_args": {"youtube": {"client_name": "mweb"}},
+            "http_headers": {"User-Agent": "Mozilla/5.0 (Linux; Android 10)"},
+            "socket_timeout": 30,
+        }
         formats_list = []
 
         try:
@@ -588,8 +591,6 @@ class YouTubeDownloader(QWidget):
         if "~" in selected_item:
             selected_item = selected_item.split(" ~")[0]  # remove size suffix
 
-        codes = self.format_map.get(selected_item)
-
         # Lazy-load FFmpeg on first download (speeds up app startup)
         if not self.ffmpeg_path:
             self.ffmpeg_path = find_ffmpeg()
@@ -616,6 +617,10 @@ class YouTubeDownloader(QWidget):
             "retries": 10,
             "fragment_retries": 10,
             "max_retries": 3,
+            "js_runtimes": {"node": {}},
+            "extractor_args": {"youtube": {"client_name": "mweb"}},
+            "http_headers": {"User-Agent": "Mozilla/5.0 (Linux; Android 10)"},
+            "socket_timeout": 30,
         }
 
         # --- Map selection to yt-dlp format codes ---
@@ -631,32 +636,15 @@ class YouTubeDownloader(QWidget):
                 }
             ]
         else:
-            # Use flexible format selection with fallback
-            # Instead of hardcoded format IDs, use quality-based selection
-            if isinstance(codes, dict):
-                # Try specific format codes first, but fall back to quality selector
-                video_code = codes.get("video", "")
-                audio_code = codes.get("audio", "")
-
-                # Determine target resolution from selection
-                if "1080p" in selected_item:
-                    quality_fallback = (
-                        "bestvideo[height<=1080]+bestaudio/"
-                        "best[height<=1080]"
-                    )
-                elif "720p" in selected_item:
-                    quality_fallback = (
-                        "bestvideo[height<=720]+bestaudio/"
-                        "best[height<=720]"
-                    )
-                else:
-                    quality_fallback = "bestvideo+bestaudio/best"
-
-                # Try specific codes first, then fall back
-                if video_code and audio_code:
-                    ydl_opts["format"] = f"{video_code}+{audio_code}/{quality_fallback}"
-                else:
-                    ydl_opts["format"] = quality_fallback
+            # Use quality-based selection instead of hardcoded format codes
+            if "1080p" in selected_item:
+                fmt = "bestvideo[height<=1080]+bestaudio"
+                ydl_opts["format"] = f"{fmt}/best[height<=1080]"
+            elif "720p" in selected_item:
+                fmt = "bestvideo[height<=720]+bestaudio"
+                ydl_opts["format"] = f"{fmt}/best[height<=720]"
+            else:
+                ydl_opts["format"] = "bestvideo+bestaudio/best"
 
         # Start download thread
         self.download_thread = DownloadThread(url, ydl_opts)
