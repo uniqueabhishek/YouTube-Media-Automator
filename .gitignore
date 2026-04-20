@@ -60,3 +60,4 @@ Thumbs.db
 *.log
 git_info.txt
 My YT Downloads/
+.claude/settings.json
