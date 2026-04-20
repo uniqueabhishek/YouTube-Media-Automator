@@ -2,6 +2,10 @@
 
 Professional YouTube video downloader with advanced features built using PyQt5.
 
+<p align="center">
+  <img src="promo-assets/screenshot-gui.png" alt="YouTube Downloader GUI" width="800"/>
+</p>
+
 ## Features
 
 ✨ **Advanced Functionality:**

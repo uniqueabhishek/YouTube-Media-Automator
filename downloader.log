@@ -404,3 +404,159 @@
 2026-01-10 01:38:36.840 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [Merger] Merging formats into "D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.mp4"
 2026-01-10 01:38:37.232 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - Deleting original file D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f140.m4a (pass -k to keep)
 2026-01-10 01:38:37.235 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - Deleting original file D:\D Desktop\Arjun_Erigaisi_s_determination_meets_Magnus_Carlsen_s_grind_World_Rapid_2025.f136.mp4 (pass -k to keep)
+2026-04-19 19:36:15.717 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-19 19:36:15.719 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-19 19:36:16.890 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-19 19:36:16.894 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-19 19:36:17.091 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-19 19:36:17.688 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:17.690 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-19 19:36:18.236 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:18.322 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-19 19:36:18.410 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-19 19:36:18.410 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-19 19:36:21.465 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-19 19:36:21.465 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-19 19:36:22.698 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-19 19:36:22.704 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-19 19:36:22.934 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-19 19:36:23.180 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:23.182 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-19 19:36:23.627 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:23.709 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-19 19:36:23.746 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-19 19:36:23.747 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-19 19:36:26.798 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-19 19:36:26.799 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-19 19:36:28.135 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-19 19:36:28.139 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-19 19:36:28.377 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-19 19:36:28.711 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:28.712 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-19 19:36:29.105 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-19 19:36:29.188 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-19 19:36:29.233 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-19 19:36:29.234 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:33.663 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:03:33.664 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:03:35.008 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-20 11:03:35.013 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:03:35.188 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-20 11:03:35.473 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:35.475 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-20 11:03:35.633 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:35.721 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:03:35.781 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:35.782 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:38.836 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:03:38.837 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:03:41.747 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-20 11:03:41.752 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:03:41.933 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-20 11:03:44.108 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:44.110 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-20 11:03:44.534 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:44.616 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:03:44.657 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:44.658 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:47.712 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:03:47.713 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:03:48.791 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+2026-04-20 11:03:48.798 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:03:48.976 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading web safari player API JSON
+2026-04-20 11:03:49.368 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web_safari client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:49.369 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading m3u8 information
+2026-04-20 11:03:49.798 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:03:49.886 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:03:49.919 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:03:49.919 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:29.622 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:07:29.623 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:07:30.903 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:07:31.080 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:07:31.258 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:07:31.434 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:07:31.664 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:07:31.747 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:07:31.783 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:31.784 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:34.836 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:07:34.837 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:07:35.705 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:07:35.927 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:07:36.082 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:07:36.198 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:07:36.402 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:07:36.482 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:07:36.532 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:36.532 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:39.583 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:07:39.584 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:07:40.671 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:07:40.850 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:07:41.046 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:07:41.405 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:07:41.570 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:07:41.665 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:07:41.710 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:07:41.711 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:09.282 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:09:09.283 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:09:10.370 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:09:10.555 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:09:10.724 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:09:10.835 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:09:11.037 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:09:11.141 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:09:11.204 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:11.204 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:14.258 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:09:14.258 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:09:15.434 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:09:15.677 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:09:15.810 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:09:15.924 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:09:16.089 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:09:16.174 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:09:16.240 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:16.241 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:19.292 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:09:19.292 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:09:20.356 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:09:20.541 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:09:20.670 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:09:20.792 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:09:20.988 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:09:21.069 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:09:21.106 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:09:21.107 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:29.732 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:10:29.732 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:10:30.904 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:10:31.071 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:10:31.203 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:10:31.333 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:10:31.575 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:10:31.673 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:10:31.709 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:31.710 | ERROR    | download_thread:run:118 - Download attempt 1 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:34.761 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:10:34.761 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:10:36.093 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:10:36.316 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:10:36.457 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:10:36.582 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:10:36.762 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:10:36.852 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:10:36.903 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:36.904 | ERROR    | download_thread:run:118 - Download attempt 2 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:39.956 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] Extracting URL: https://www.youtube.com/watch?v=zgG-gjioU1g
+2026-04-20 11:10:39.957 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading webpage
+2026-04-20 11:10:41.275 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv client config
+2026-04-20 11:10:41.451 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading player 4b0d80ee-main
+2026-04-20 11:10:41.580 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading tv player API JSON
+2026-04-20 11:10:41.697 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [youtube] zgG-gjioU1g: Downloading android sdkless player API JSON
+2026-04-20 11:10:41.868 | WARNING  | yt_dlp.YoutubeDL:report_warning:1134 - [youtube] zgG-gjioU1g: Some web client https formats have been skipped as they are missing a url. YouTube is forcing SABR streaming for this client. See  https://github.com/yt-dlp/yt-dlp/issues/12482  for more details
+2026-04-20 11:10:41.948 | DEBUG    | yt_dlp.YoutubeDL:to_screen:995 - [info] zgG-gjioU1g: Downloading 1 format(s): 251
+2026-04-20 11:10:41.995 | ERROR    | yt_dlp.YoutubeDL:to_stderr:1007 - [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2026-04-20 11:10:41.996 | ERROR    | download_thread:run:118 - Download attempt 3 failed for https://www.youtube.com/watch?v=zgG-gjioU1g: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
